@@ -14,7 +14,16 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
 
-
+            $table->string("title");
+            $table->integer("rooms_number");
+            $table->integer("beds_number");
+            $table->integer("bathrooms_number");
+            $table->integer("square_meters");
+            $table->string("address");
+            $table->decimal("latitude", 11, 8);
+            $table->decimal("longitude", 11, 8);
+            $table->text("thumbnail");
+            $table->boolean("visibility");
             
             $table->timestamps();
         });
