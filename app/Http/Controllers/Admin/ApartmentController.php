@@ -58,20 +58,16 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Apartment $id)
+    public function edit(Apartment $apartment)
     {
-        $apartment = Apartment::findOrFail($id);
-
         return view("admin.apartments.edit", compact("apartment"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ApartmentsUpsertRequest $request, Apartment $id)
+    public function update(ApartmentsUpsertRequest $request, Apartment $apartment)
     {
-        $apartment = Apartment::findOrFail($id);
-
         // Inserts data validation
         $data = $request->validated();
 
