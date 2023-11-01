@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string("title");
+            $table->string("slug");
             $table->integer("rooms_number");
             $table->integer("beds_number");
             $table->integer("bathrooms_number");
