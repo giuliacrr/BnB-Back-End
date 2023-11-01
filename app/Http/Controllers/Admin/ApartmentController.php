@@ -7,6 +7,7 @@ use App\Http\Requests\ApartmentsUpsertRequest;
 use App\Models\Apartment;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -36,7 +37,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.apartments.index');
     }
 
     /**
@@ -63,6 +64,10 @@ class ApartmentController extends Controller
 
         // Save the image within the filesystem in the apartments folder
         $data["thumbnail"] = Storage::put("apartments", $data["thumbnail"]);
+
+        // Save current user
+        $currentUser = Auth::user();
+        $data["user_id"] = $currentUser->id;
 
         // Inserts a default value for longitude and latitude
         $data['latitude'] = 0.0;
