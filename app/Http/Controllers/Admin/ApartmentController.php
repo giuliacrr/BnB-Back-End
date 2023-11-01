@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApartmentsUpsertRequest;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 
@@ -21,15 +22,29 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $apartments = Apartment::all();
+
+        return view("admin.apartments.create", compact("apartments"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ApartmentsUpsertRequest $request)
     {
-        //
+        // Inserts data validation
+        $data = $request->validated();
+
+        // Inserts a default value for longitude and latitude
+        $data['latitude'] = 0.0;
+        $data['longitude'] = 0.0;
+
+        // Create a new instance and save the data entered in the form
+        $apartment = new Apartment();
+        $apartment->fill($data);
+        $apartment->save();
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
@@ -45,15 +60,20 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        return view("admin.apartments.edit", compact("apartment"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(ApartmentsUpsertRequest $request, Apartment $apartment)
     {
-        //
+        // Inserts data validation
+        $data = $request->validated();
+
+        $apartment->update($data); // Update item data
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
