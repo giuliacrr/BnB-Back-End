@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApartmentsUpsertRequest;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,8 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
-        return view('admin.apartments.index', compact("apartments"));
+        $users = User::all();
+        return view('admin.apartments.index', compact("apartments", "users"));
     }
 
     /**
