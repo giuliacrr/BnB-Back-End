@@ -21,7 +21,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $apartments = Apartment::all();
+
+        return view("admin.apartments.create", compact("apartments"));
     }
 
     /**
@@ -29,7 +31,24 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Inserts data validation
+        $data = $request->validate([
+            'title' => 'required',
+            'rooms_number' => 'required',
+            'beds_number' => 'required',
+            'bathrooms_number' => 'required',
+            'square_meters' => 'required',
+            'address' => 'required',
+            'thumbnail' => 'required',
+            'visibility' => 'required',
+        ]);
+
+        // Create a new instance and save the data entered in the form
+        $apartment = new Apartment();
+        $apartment->fill($data);
+        $apartment->save();
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
@@ -43,17 +62,35 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Apartment $apartment)
+    public function edit(Apartment $id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+
+        return view("admin.apartments.edit", compact("apartment"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(Request $request, Apartment $id)
     {
-        //
+        $apartment = Apartment::findOrFail($id);
+
+        // Inserts data validation
+        $data = $request->validate([
+            'title' => 'required',
+            'rooms_number' => 'required',
+            'beds_number' => 'required',
+            'bathrooms_number' => 'required',
+            'square_meters' => 'required',
+            'address' => 'required',
+            'thumbnail' => 'required',
+            'visibility' => 'required',
+        ]);
+
+        $apartment->update($data); // Update item data
+
+        return redirect()->route("admin.apartments.index");
     }
 
     /**
