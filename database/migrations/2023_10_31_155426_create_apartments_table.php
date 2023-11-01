@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("address");
             $table->decimal("latitude", 11, 8);
             $table->decimal("longitude", 11, 8);
-            $table->text("thumbnail");
+            $table->text("thumbnail")->nullable();
             $table->boolean("visibility");
             
             $table->timestamps();

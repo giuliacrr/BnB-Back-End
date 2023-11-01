@@ -126,7 +126,7 @@ class ApartmentController extends Controller
         // If the user has inserted a new image, update the file in the folder
 
         if (isset($data["thumbnail"])) {
-            Storage::delete($apartment->thumb);
+            Storage::delete($apartment->thumbnail);
             $data["thumbnail"] = Storage::put("/apartments", $data["thumbnail"]);
         } else {
             $data["thumbnail"] = $apartment->thumbnail;
@@ -149,8 +149,8 @@ class ApartmentController extends Controller
     {
         $apartment = Apartment::where("slug", $slug)->firstOrFail();
 
-        if ($apartment->thumb) {
-            Storage::delete($apartment->thumb);
+        if ($apartment->thumbnail) {
+            Storage::delete($apartment->thumbnail);
         }
 
         $apartment->services()->detach();
