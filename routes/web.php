@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
 
+//Mi crea la rotta con nome admin.apartments + tutte le rotte sottostanti ad essa (ex. admin.apartments.edit)
 Route::middleware('auth')
     ->prefix("admin")//Path prefix
     ->name("admin.")//Name prefix
