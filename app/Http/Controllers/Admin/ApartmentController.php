@@ -64,7 +64,7 @@ class ApartmentController extends Controller
         $data["slug"] = $this->createSlug($data["title"]);
 
         // Save the image within the filesystem in the apartments folder
-        $data["thumbnail"] = Storage::put("/apartments", $data["thumbnail"]);
+        $data["thumbnail"] = Storage::put("apartments", $data["thumbnail"]);
 
         // Save current user
         $currentUser = Auth::user();
