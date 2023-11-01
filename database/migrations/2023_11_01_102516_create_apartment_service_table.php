@@ -16,13 +16,13 @@ return new class extends Migration
 
             $table->foreign('apartment_id')
                 ->references('id')
-                ->on('apartment');
+                ->on('apartments');
             
             $table->unsignedBigInteger('service_id');
 
             $table->foreign('service_id')
                 ->references('id')
-                ->on('service');
+                ->on('services');
         });
     }
 
