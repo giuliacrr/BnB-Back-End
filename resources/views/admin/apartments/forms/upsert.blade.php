@@ -23,7 +23,7 @@
         @error('beds_number')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-        {{-- rooms number --}}
+        {{-- bathrooms number --}}
         <label class="form-label fw-bold">Numero di bagni:</label>
         <input type="number" name="bathrooms_number"
             value="{{ old('bathrooms_number', $apartment?->bathrooms_number) }}"
@@ -33,7 +33,7 @@
         @enderror
         {{-- square meters --}}
         <label class="form-label fw-bold">Grandezza casa:</label>
-        <input type="number" name="square_meters" value="{{ old('bathrooms_number', $apartment?->square_meters) }}"
+        <input type="number" name="square_meters" value="{{ old('square_meters', $apartment?->square_meters) }}"
             class="form-control @error('square_meters') is-invalid @enderror">
         @error('square_meters')
         <div class="invalid-feedback">{{ $message }}</div>
@@ -76,11 +76,11 @@
                             <div class="d-flex flex-wrap">
                                 @foreach ($services as $service)
                                 <div class="form-check m-1">
-                                    <input class="form-check-input" type="checkbox" id="{{ $service->id }}"
+                                    <input class="form-check-input" type="checkbox" id="service{{ $service->id }}"
                                         name="services[]" value="{{ $service->id }}" {{
                                         $apartment?->services->contains($service) || in_array($service->id,
                                     old('services', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="{{ $service->id }}-select">{{ $service->title
+                                    <label class="form-check-label" for="service{{ $service->id }}">{{ $service->title
                                         }}</label>
                                 </div>
                                 @endforeach
