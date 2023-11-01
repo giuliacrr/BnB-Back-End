@@ -28,8 +28,9 @@ class ApartmentsUpsertRequest extends FormRequest
             'bathrooms_number' => 'required',
             'square_meters' => 'required',
             'address' => 'required',
-            'thumbnail' => 'required',
-            'visibility' => 'required'
+            //'thumbnail' => 'required',
+            'visibility' => 'required',
+            "services" => "nullable"
         ];
     }
 
@@ -47,7 +48,7 @@ class ApartmentsUpsertRequest extends FormRequest
             'bathrooms_number.required' => 'Il campo numero di bagni è obbligatorio.',
             'square_meters.required' => 'Il campo della grandezza della casa è obbligatorio.',
             'address.required' => 'Il campo indirizzo è obbligatorio.',
-            'thumbnail.required' => 'Il campo immagine è obbligatorio.',
+            //'thumbnail.required' => 'Il campo immagine è obbligatorio.',
             'visibility.required' => 'Il campo visibilità è obbligatorio.',
         ];
     }

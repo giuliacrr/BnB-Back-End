@@ -6,7 +6,7 @@
 
         {{-- Includes the form to edit an apartment already inserted --}}
         @include('admin.apartments.forms.upsert', [
-            'action' => route('admin.apartments.update', ['apartment' => $apartment->id]),
+            'action' => route('admin.apartments.update', $apartment->slug),
             'method' => 'PUT',
             'apartment' => $apartment,
         ])
