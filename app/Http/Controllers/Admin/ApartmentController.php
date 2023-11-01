@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApartmentsUpsertRequest;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 
@@ -29,19 +30,10 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ApartmentsUpsertRequest $request)
     {
         // Inserts data validation
-        $data = $request->validate([
-            'title' => 'required',
-            'rooms_number' => 'required',
-            'beds_number' => 'required',
-            'bathrooms_number' => 'required',
-            'square_meters' => 'required',
-            'address' => 'required',
-            'thumbnail' => 'required',
-            'visibility' => 'required',
-        ]);
+        $data = $request->validated();
 
         // Create a new instance and save the data entered in the form
         $apartment = new Apartment();
@@ -72,21 +64,12 @@ class ApartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $id)
+    public function update(ApartmentsUpsertRequest $request, Apartment $id)
     {
         $apartment = Apartment::findOrFail($id);
 
         // Inserts data validation
-        $data = $request->validate([
-            'title' => 'required',
-            'rooms_number' => 'required',
-            'beds_number' => 'required',
-            'bathrooms_number' => 'required',
-            'square_meters' => 'required',
-            'address' => 'required',
-            'thumbnail' => 'required',
-            'visibility' => 'required',
-        ]);
+        $data = $request->validated();
 
         $apartment->update($data); // Update item data
 
