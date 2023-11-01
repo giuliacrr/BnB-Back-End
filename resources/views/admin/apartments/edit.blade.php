@@ -10,6 +10,12 @@
             'method' => 'PUT',
             'apartment' => $apartment,
         ])
+        <form action="{{ route('admin.apartments.destroy', $apartment->slug) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button class="btn btn-danger">Elimina</button>
+        </form>
 
     </div>
 @endsection

@@ -37,7 +37,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        return view('admin.apartments.index');
+        $apartments = Apartment::all();
+        return view('admin.apartments.index', compact("apartments"));
     }
 
     /**
@@ -123,13 +124,13 @@ class ApartmentController extends Controller
         }
 
         // If the user has inserted a new image, update the file in the folder
+
         if (isset($data["thumbnail"])) {
-            // Delete the previously saved image
-            if ($apartment->thumbnail) {
-                Storage::delete($apartment->thumbnail);
-            }
-            $data["thumbnail"] = Storage::put("apartments", $data["thumbnail"]);
-        }
+            Storage::delete($apartment->thumb);
+            $data["thumbnail"] = Storage::put("/apartments", $data["thumbnail"]);
+        } else {
+            $data["thumbnail"] = $apartment->thumbnail;
+        };
 
         // Manually assign the services array
         // -> detaches the services not present in the new array
@@ -144,8 +145,18 @@ class ApartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Apartment $apartment)
+    public function destroy(string $slug)
     {
-        //
+        $apartment = Apartment::where("slug", $slug)->firstOrFail();
+
+        if ($apartment->thumb) {
+            Storage::delete($apartment->thumb);
+        }
+
+        $apartment->services()->detach();
+        $apartment->sponsorships()->detach();
+        $apartment->delete();
+
+        return redirect()->route("admin.apartments.index");
     }
 }
