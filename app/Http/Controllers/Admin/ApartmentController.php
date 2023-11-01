@@ -35,6 +35,10 @@ class ApartmentController extends Controller
         // Inserts data validation
         $data = $request->validated();
 
+        // Inserts a default value for longitude and latitude
+        $data['latitude'] = 0.0;
+        $data['longitude'] = 0.0;
+
         // Create a new instance and save the data entered in the form
         $apartment = new Apartment();
         $apartment->fill($data);
