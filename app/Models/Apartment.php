@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Apartment extends Model
 {
     use HasFactory;
+
+    // Create an array indicating the columns to populate
+    protected $fillable = [
+        "title",
+        "rooms_number",
+        "beds_number",
+        "bathrooms_number",
+        "square_meters",
+        "address",
+        "thumbnail",
+        "visibility"
+    ];
 }
