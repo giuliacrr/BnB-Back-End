@@ -46,12 +46,52 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         {{-- thumbnail --}}
-        <label class="form-label fw-bold">Immagine:</label>
-        <input type="text" name="thumbnail" value="{{ old('thumbnail', $apartment?->thumbnail) }}"
-            class="form-control @error('thumbnail') is-invalid @enderror">
-        @error('thumbnail')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+        <div class="d-flex align-items-center mt-2">
+            @if ($apartment?->thumbnail)
+                <img style="width: 50px; height: 50px;" class="me-4 mt-2"
+                    src="{{ old('thumbnail', asset('/storage/' . $apartment->thumbnail)) }}"
+                    alt="{{ old('title', $apartment?->title) }}">
+            @endif
+            <div class="w-100">
+                <label class="form-label fw-bold">Immagine:</label>
+                <input type="file" accept="image/*" name="thumbnail"
+                    class="form-control @error('thumbnail') is-invalid @enderror">
+                @error('thumbnail')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        {{-- services --}}
+        <div class="accordion accordion-flush pt-3 pb-3" id="accordionServices">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fw-bold ps-1" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Seleziona i servizi che offre l'appartamento
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionServices">
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <div class="d-flex flex-wrap">
+                                @foreach ($services as $service)
+                                    <div class="form-check m-1">
+                                        <input class="form-check-input" type="checkbox" id="{{ $service->id }}"
+                                            name="services[]" value="{{ $service->id }}"
+                                            {{ $apartment?->services->contains($service) || in_array($service->id, old('services', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label"
+                                            for="{{ $service->id }}-select">{{ $service->title }}</label>
+                                    </div>
+                                @endforeach
+                                @error('services')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{-- visibility hidden --}}
         <input type="hidden" name="visibility" value="0">
         {{-- visibility checkbox --}}

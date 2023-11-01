@@ -12,6 +12,8 @@ class Apartment extends Model
     // Create an array indicating the columns to populate
     protected $fillable = [
         "title",
+        "slug",
+        "user_id",
         "rooms_number",
         "beds_number",
         "bathrooms_number",
