@@ -52,10 +52,12 @@
         @error('thumbnail')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-        {{-- visibility --}}
+        {{-- visibility hidden --}}
+        <input type="hidden" name="visibility" value="0">
+        {{-- visibility checkbox --}}
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="thumbnail"
-                value="{{ old('visibility', $apartment?->visibility) }}" id="apartmentVisibilityCheck">
+            <input class="form-check-input" type="checkbox" name="visibility" value="1"
+                id="apartmentVisibilityCheck" {{ old('visibility', $apartment?->visibility) ? 'checked' : '' }}>
             <label class="form-check-label" for="apartmentVisibilityCheck">
                 Pubblicato
             </label>
@@ -66,4 +68,5 @@
         {{-- button --}}
         <button type="submit" class="btn btn-outline-primary me-1 mt-4">Save</button>
         <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary mt-4">Cancel</a>
+    </div>
 </form>
