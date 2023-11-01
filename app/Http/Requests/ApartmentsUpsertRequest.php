@@ -29,7 +29,8 @@ class ApartmentsUpsertRequest extends FormRequest
             'square_meters' => 'required',
             'address' => 'required',
             //'thumbnail' => 'required',
-            'visibility' => 'required'
+            'visibility' => 'required',
+            "services" => "nullable"
         ];
     }
 
