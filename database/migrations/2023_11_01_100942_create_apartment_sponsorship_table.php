@@ -16,13 +16,13 @@ return new class extends Migration
 
             $table->foreign('apartment_id')
                 ->references('id')
-                ->on('apartment');
+                ->on('apartments');
             
             $table->unsignedBigInteger('sponsorship_id');
 
             $table->foreign('sponsorship_id')
                 ->references('id')
-                ->on('sponsorship');
+                ->on('sponsorships');
 
             $table->dateTime('start_date_time');
             $table->dateTime('end_date_time');
