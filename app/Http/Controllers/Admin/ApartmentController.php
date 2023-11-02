@@ -38,9 +38,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
-        $users = User::all();
-        return view('admin.apartments.index', compact("apartments", "users"));
+        $user = Auth::user();   //trovo l'utente loggato
+        $apartments = $user->apartments;    //trovo gli appartamenti caricati dall'utente loggato
+        return view('admin.apartments.index', compact("apartments"));
     }
 
     /**
@@ -103,8 +103,13 @@ class ApartmentController extends Controller
      */
     public function edit($slug)
     {
-        $apartment = Apartment::where('slug', $slug)->first();
-        $services = Service::all();
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();    //Trovo l'appartamento corrispondente alla slug
+        $services = Service::all(); //Trovo tutti i servizi
+
+        //Se l'appartamento trovato non appartiene all'utente loggato ritorno all'index
+        if($apartment->user_id !== Auth::id()){
+            return redirect()->route("admin.apartments.index");
+        }
 
         return view("admin.apartments.edit", compact("apartment", "services"));
     }

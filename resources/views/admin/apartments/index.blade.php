@@ -6,7 +6,6 @@
     <!--Foreach per ciclare gli appartamenti in $apartments-->
     @foreach ($apartments as $apartment)
     <!--condizione per stampare solo gli appartamenti cui corrisponde user_id(di apartments) con id user(di users)-->
-      @if( Auth::user()->id === $apartment->user_id)
       <div class="card flex-row mt-4 mb-4" style="width: 100%;">
         <img src="{{asset('storage/' . $apartment->thumbnail) }}" class="card-img-top rounded" style="width: 20%" alt="...">
         <div class="card-body">
@@ -14,13 +13,10 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="{{ Route('admin.apartments.edit', $apartment->slug)}}" class="btn btn-primary">GEDIT</a>
           <small class="d-block mt-4">Di:
-            @foreach ($users as $user )
-              {{$apartment->user_id === $user->id ? $user->name : ""}}
-            @endforeach
+              {{$apartment->user->name}}
           </small>
         </div>
       </div>
-      @endif
     @endforeach
   </div>
 
