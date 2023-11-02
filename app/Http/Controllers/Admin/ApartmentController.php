@@ -134,10 +134,15 @@ class ApartmentController extends Controller
             $data["thumbnail"] = $apartment->thumbnail;
         };
 
-        // Manually assign the services array
-        // -> detaches the services not present in the new array
-        // -> attaches services not present in the old array
-        $apartment->services()->sync($data["services"]); // accesses the relationship and invokes the sync method
+        if (!isset($services)) {
+            $services = $request->input('services', []);
+            $apartment->services()->detach();
+        } else {
+            // Manually assign the services array
+            // -> detaches the services not present in the new array
+            // -> attaches services not present in the old array
+            $apartment->services()->sync($data["services"]); // accesses the relationship and invokes the sync method
+        }
 
         $apartment->update($data); // Update item data
 
