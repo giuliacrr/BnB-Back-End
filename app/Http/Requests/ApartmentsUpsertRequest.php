@@ -30,7 +30,7 @@ class ApartmentsUpsertRequest extends FormRequest
             'address' => 'required',
             'thumbnail' => 'nullable',
             'visibility' => 'required',
-            "services" => "nullable"
+            "services" => "required"
         ];
     }
 
