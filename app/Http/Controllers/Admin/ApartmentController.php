@@ -108,7 +108,8 @@ class ApartmentController extends Controller
 
         //Se l'appartamento trovato non appartiene all'utente loggato ritorno all'index
         if($apartment->user_id !== Auth::id()){
-            return redirect()->route("admin.apartments.index");
+            // return redirect()->route("admin.apartments.index");
+            return abort(404);
         }
 
         return view("admin.apartments.edit", compact("apartment", "services"));
