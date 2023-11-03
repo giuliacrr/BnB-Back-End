@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $apartments = Apartment::all();
+    $city = $request->input('city');
+    $address = $request->input('address');
+
+    $query = Apartment::query();
+
+    if ($city) {
+        $query->where('city', 'like', '%' . $city . '%');
+    }
+
+    if ($address) {
+        $query->where('address', 'like', '%' . $address . '%');
+    }
+
+    $apartments = $query->get();
 
     return response()->json($apartments);
   }
