@@ -11,30 +11,31 @@
         @enderror
         {{-- rooms number --}}
         <label class="form-label fw-bold">Numero di stanze:</label>
-        <input type="number" min="1" name="rooms_number" value="{{ old('rooms_number', $apartment?->rooms_number) }}"
-            class="form-control @error('rooms_number') is-invalid @enderror">
+        <input type="number" min="1" name="rooms_number" id="rooms_number"
+            value="{{ old('rooms_number', $apartment?->rooms_number) }}"
+            class="form-control @error('rooms_number') is-invalid @enderror" oninput="checkLength('rooms_number')">
         @error('rooms_number')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         {{-- beds number --}}
         <label class="form-label fw-bold">Numero di letti:</label>
-        <input type="number" min="1" name="beds_number" value="{{ old('beds_number', $apartment?->beds_number) }}"
-            class="form-control @error('beds_number') is-invalid @enderror">
+        <input type="number" min="1" name="beds_number" id="beds_number" value="{{ old('beds_number', $apartment?->beds_number) }}"
+            class="form-control @error('beds_number') is-invalid @enderror" oninput="checkLength('beds_number')">
         @error('beds_number')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         {{-- bathrooms number --}}
         <label class="form-label fw-bold">Numero di bagni:</label>
-        <input type="number" min="1" name="bathrooms_number"
+        <input type="number" min="1" name="bathrooms_number" id="bathrooms_number"
             value="{{ old('bathrooms_number', $apartment?->bathrooms_number) }}"
-            class="form-control @error('bathrooms_number') is-invalid @enderror">
+            class="form-control @error('bathrooms_number') is-invalid @enderror" oninput="checkLength('bathrooms_number')">
         @error('bathrooms_number')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         {{-- square meters --}}
         <label class="form-label fw-bold">Grandezza casa:</label>
-        <input type="number" min="1" name="square_meters" value="{{ old('square_meters', $apartment?->square_meters) }}"
-            class="form-control @error('square_meters') is-invalid @enderror">
+        <input type="number" min="1" name="square_meters" id="square_meters" value="{{ old('square_meters', $apartment?->square_meters) }}"
+            class="form-control @error('square_meters') is-invalid @enderror" oninput="checkLength('square_meters')">
         @error('square_meters')
         <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -110,3 +111,25 @@
         <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary mt-4">Cancel</a>
     </div>
 </form>
+
+<script>
+    function checkLength(id){
+        const element = document.getElementById(id);
+        let errorSpan = document.querySelector(`.invalid-feedback.${id}`);
+        if(element.value < 1){
+            if(!errorSpan){
+                errorSpan = document.createElement("span")
+                errorSpan.classList.add("invalid-feedback", `${id}`)
+                const textStrong = document.createElement("strong")
+                errorSpan.style.display = "block";
+                textStrong.textContent = "il valore non deve essere inferiore ad 1"
+                element.insertAdjacentElement('afterend', errorSpan);
+                errorSpan.append(textStrong);
+            }
+        } else{
+            if(errorSpan){
+                errorSpan.remove();
+            }
+        }
+    }
+</script>

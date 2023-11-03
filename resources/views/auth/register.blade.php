@@ -97,34 +97,28 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password">
+                                    name="password_confirmation" required autocomplete="new-password" oninput="checkError();">
                             </div>
                         </div>
 
                         {{--Client-side Validation - controlla se le due password inserite sono uguali --}}
                         <script>
-                            
-                            // Seleziono i campi password e converma password
-                            const pswd1 = document.getElementById("password");
-                            const pswd2 = document.getElementById("password-confirm");
-
-                            // Seleziono il messaggio di errore e il suo testo
-                            const pswdError = document.getElementById("password-error");
-                            const errorText = pswdError.querySelector("strong");
-
-                            // Creo la funzione per il controllo delle password
                             function checkError(){
-                                // Ottengo il value delle due password inserite
-                                let firstPswd = pswd1.value;
-                                let secondPswd = pswd2.value;
+                                // Seleziono i campi password e converma password
+                                const pswd1 = document.getElementById("password");
+                                const pswd2 = document.getElementById("password-confirm");
+
+                                // Seleziono il messaggio di errore e il suo testo
+                                const pswdError = document.getElementById("password-error");
+                                const errorText = pswdError.querySelector("strong");
 
                                 //controllo se le password sono diverse
-                                if (firstPswd !== secondPswd) {
+                                if (pswd1.value !== pswd2.value) {
                                     //rendo visibile il messaggio e lo personalizzo 
                                     pswdError.style.display = "block";
                                     errorText.textContent = "The password field confirmation does not match."
                                 // altrimenti se la lunghezza è minore di 8
-                                } else if(firstPswd.length < 8){
+                                } else if(pswd1.value.length < 8){
                                     //rendo visibile il messaggio e lo personalizzo 
                                     pswdError.style.display = "block";
                                     errorText.textContent = "The password field must be at least 8 characters."
@@ -133,10 +127,6 @@
                                     pswdError.style.display = "none";
                                 }
                             }
-                            // Aggiungo un event listner per ciascun campo di password per richiamare la funzione che controlla le password
-                            pswd1.addEventListener("input", checkError);
-                            pswd2.addEventListener("input", checkError);
-                            
                         </script>
 
                         {{-- ---------------------------------------------------------------------------------- --}}
