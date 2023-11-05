@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$apartment->title}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="{{ Route('admin.apartments.edit', $apartment->slug)}}" class="btn btn-primary">EDIT</a>
+          <a href="{{ Route('admin.apartments.edit', $apartment->slug)}}" class="btn btn-outline-primary">EDIT</a>
           <small class="d-block mt-4">Di:
               {{$apartment->user->name}}
           </small>
