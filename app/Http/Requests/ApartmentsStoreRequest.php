@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ApartmentsUpsertRequest extends FormRequest
+class ApartmentsStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class ApartmentsUpsertRequest extends FormRequest
             'square_meters' => 'required',
             'city' => 'required',
             'address' => 'required',
-            'thumbnail' => 'nullable',
+            'thumbnail' => 'required',
             'visibility' => 'required',
             "services" => "required"
         ];
@@ -50,7 +50,8 @@ class ApartmentsUpsertRequest extends FormRequest
             'square_meters.required' => 'Il campo della grandezza della casa è obbligatorio.',
             'city.required' => 'Il campo città è obbligatorio.',
             'address.required' => 'Il campo indirizzo è obbligatorio.',
-            //'thumbnail.required' => 'Il campo immagine è obbligatorio.',
+            'thumbnail.required' => 'Il campo immagine è obbligatorio.',
+            'services.required' => 'È obbligatorio selezionare almeno un servizio.',
             'visibility.required' => 'Il campo visibilità è obbligatorio.',
         ];
     }

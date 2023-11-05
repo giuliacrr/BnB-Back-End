@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApartmentsUpsertRequest;
+use App\Http\Requests\ApartmentsStoreRequest;
+use App\Http\Requests\ApartmentsUpdateRequest;
 use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -57,7 +57,7 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ApartmentsUpsertRequest $request)
+    public function store(ApartmentsStoreRequest $request)
     {
         // Inserts data validation
         $data = $request->validated();
@@ -117,7 +117,7 @@ class ApartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ApartmentsUpsertRequest $request, $slug)
+    public function update(ApartmentsUpdateRequest $request, $slug)
     {
         $apartment = Apartment::where('slug', $slug)->first();
 
