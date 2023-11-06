@@ -30,15 +30,24 @@ class ApartmentController extends Controller
     }
 
     if ($rooms_number) {
-      $query->where('rooms-number', 'like', '%' . $rooms_number . '%');
+      if ($rooms_number == 1 || $rooms_number == 2) {
+        $query->where('rooms_number', 'like', '%' . $rooms_number . '%');
+      } elseif ($rooms_number >= 3)
+        $query->where('rooms_number', '>=', 3);
     }
 
     if ($beds_number) {
-      $query->where('beds-number', 'like', '%' . $beds_number . '%');
+      if ($beds_number == 1 || $beds_number == 2) {
+        $query->where('beds_number', 'like', '%' . $beds_number . '%');
+      } elseif ($beds_number >= 3)
+        $query->where('beds_number', '>=', 3);
     }
 
     if ($bathrooms_number) {
-      $query->where('bathrooms-number', 'like', '%' . $bathrooms_number . '%');
+      if ($bathrooms_number == 1 || $bathrooms_number == 2) {
+        $query->where('bathrooms_number', 'like', '%' . $bathrooms_number . '%');
+      } elseif ($bathrooms_number >= 3)
+        $query->where('bathrooms_number', '>=', 3);
     }
 
     if ($services) {
