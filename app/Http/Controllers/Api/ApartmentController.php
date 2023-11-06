@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\Service;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 
@@ -28,15 +29,15 @@ class ApartmentController extends Controller
       $query->where('address', 'like', '%' . $address . '%');
     }
 
-    if($rooms_number) {
+    if ($rooms_number) {
       $query->where('rooms-number', 'like', '%' . $rooms_number . '%');
     }
 
-    if($beds_number) {
+    if ($beds_number) {
       $query->where('beds-number', 'like', '%' . $beds_number . '%');
     }
 
-    if($bathrooms_number) {
+    if ($bathrooms_number) {
       $query->where('bathrooms-number', 'like', '%' . $bathrooms_number . '%');
     }
 
@@ -50,7 +51,13 @@ class ApartmentController extends Controller
       ->with('services', 'sponsorships')
       ->get();
 
-    return response()->json($apartments);
+    // Recupera tutti i servizi
+    $allServices = Service::all();
+
+    return response()->json([
+      'apartments' => $apartments,
+      'services' => $allServices,
+    ]);
   }
 
   public function show($slug)
