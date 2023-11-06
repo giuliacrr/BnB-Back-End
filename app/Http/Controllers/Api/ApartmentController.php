@@ -19,6 +19,12 @@ class ApartmentController extends Controller
     $bathrooms_number = $request->input('bathrooms_number');
     $services = $request->input('services');
 
+    //
+    $lat = $request->input('lat'); // Latitudine del punto centrale
+    $lon = $request->input('lon'); // Longitudine del punto centrale
+    $radius = $request->input('radius'); // Raggio in chilometri
+    //
+
     $query = Apartment::query();
 
     if ($city) {
@@ -46,6 +52,12 @@ class ApartmentController extends Controller
         $q->whereIn('service_id', $services);
       });
     }
+
+    //
+    if ($lat && $lon && $radius) {
+      $query->whereRaw("6371 * acos(cos(radians($lat)) * cos(radians(lat)) * cos(radians(lon) - radians($lon)) + sin(radians($lat)) * sin(radians(lat)) <= $radius");
+    }
+    //
 
     $apartments = $query
       ->with('services', 'sponsorships')
