@@ -9,6 +9,7 @@ use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -65,16 +66,34 @@ class ApartmentController extends Controller
         // Call the function to generate a unique slug
         $data["slug"] = $this->createSlug($data["title"]);
 
+        //
+        // Use the TomTom Geocoding API to get lat and lon from the address
+        $query = $data["city"] . ', ' . $data["address"];
+        $key = 'O8G3nbrrFXgXG05YvxpNGd9inXNQbAJp';
+
+        $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
+            'query' => $query,
+            'key' => $key,
+        ]);
+
+        $geocodingData = $response->json();
+
+        if (!empty($geocodingData['results'])) {
+            $location = $geocodingData['results'][0]['position'];
+            $data['latitude'] = $location['lat'];
+            $data['longitude'] = $location['lon'];
+        } else {
+            session()->flash('error', 'Indirizzo non valido. Per favore, inserisci un indirizzo valido.');
+            return redirect()->route("admin.apartments.create");
+        }
+        //
+
         // Save the image within the filesystem in the apartments folder
         $data["thumbnail"] = Storage::put("apartments", $data["thumbnail"]);
 
         // Save current user
         $currentUser = Auth::user();
         $data["user_id"] = $currentUser->id;
-
-        // Inserts a default value for longitude and latitude
-        $data['latitude'] = 0.0;
-        $data['longitude'] = 0.0;
 
         // Create a new instance and save the data entered in the form
         $apartment = new Apartment();
@@ -107,8 +126,7 @@ class ApartmentController extends Controller
         $services = Service::all(); //Trovo tutti i servizi
 
         //Se l'appartamento trovato non appartiene all'utente loggato ritorno all'index
-        if($apartment->user_id !== Auth::id()){
-            // return redirect()->route("admin.apartments.index");
+        if ($apartment->user_id !== Auth::id()) {
             return abort(404);
         }
 
