@@ -51,10 +51,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ Route('admin.apartments.index')}}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="http://localhost:5174/">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ Route('admin.apartments.create')}}">Add</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ Route('admin.apartments.index')}}">My Apartments</a>
                         </li>
                     </ul>
 
