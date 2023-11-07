@@ -219,3 +219,22 @@ h6 {
         font-size: 0.7rem;
     }
 }
+
+// Form registrazione
+.invalid-feedback {
+    position: relative;
+}
+
+.error-user-form {
+    color: $partial-secondary-color;
+    font-style: italic;
+    font-size: 0.7rem;
+}
+
+// Modifica placeholder
+.form-control::placeholder {
+    color: $partial-secondary-color;
+    position: absolute;
+    top: 25%;
+    right: 3%;
+}
