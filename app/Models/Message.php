@@ -9,6 +9,13 @@ class Message extends Model
 {
     use HasFactory;
 
+    // Create an array indicating the columns to populate
+    protected $fillable = [
+        "name",
+        "email",
+        "message_text"
+    ];
+
     public function apartment()
     {
         return $this->belongsTo(Apartment::class);
