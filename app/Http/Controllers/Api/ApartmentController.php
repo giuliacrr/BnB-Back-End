@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ApartmentController extends Controller
 {
@@ -18,21 +19,34 @@ class ApartmentController extends Controller
     $beds_number = $request->input('beds_number');
     $bathrooms_number = $request->input('bathrooms_number');
     $services = $request->input('services');
-
-    //
-    $lat = $request->input('lat'); // Latitudine del punto centrale
-    $lon = $request->input('lon'); // Longitudine del punto centrale
+    $lat = 0;
+    $lon = 0;
     $radius = $request->input('radius'); // Raggio in chilometri
-    //
 
     $query = Apartment::query();
 
-    if ($city) {
-      $query->where('city', 'like', '%' . $city . '%');
-    }
-
     if ($address) {
-      $query->where('address', 'like', '%' . $address . '%');
+      $key = 'O8G3nbrrFXgXG05YvxpNGd9inXNQbAJp';
+
+      $response = Http::get("https://api.tomtom.com/search/2/geocode/getaddress.json", [
+        'query' => $address,
+        'key' => $key,
+      ]);
+
+      $geocodingData = $response->json();
+
+      if (!empty($geocodingData['results'])) {
+        $location = $geocodingData['results'][0]['position'];
+        $lat = $location['lat'];
+        $lon = $location['lon'];
+      }
+
+      if ($lat && $lon && $radius) {
+        $query->whereRaw("6371 * ACOS(
+          COS(RADIANS($lat)) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS($lon))
+          + SIN(RADIANS($lat)) * SIN(RADIANS(latitude))
+        ) <= $radius");
+      }
     }
 
     if ($rooms_number) {
@@ -61,12 +75,6 @@ class ApartmentController extends Controller
         $q->whereIn('service_id', $services);
       });
     }
-
-    //
-    if ($lat && $lon && $radius) {
-      $query->whereRaw("6371 * acos(cos(radians($lat)) * cos(radians(lat)) * cos(radians(lon) - radians($lon)) + sin(radians($lat)) * sin(radians(lat)) <= $radius");
-    }
-    //
 
     $apartments = $query
       ->with('services', 'sponsorships')
