@@ -1,23 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-
-  <div class="container ">
-    <!--Foreach per ciclare gli appartamenti in $apartments-->
-    @foreach ($apartments as $apartment)
-    <!--condizione per stampare solo gli appartamenti cui corrisponde user_id(di apartments) con id user(di users)-->
-      <div class="card flex-row mt-4 mb-4" style="width: 100%;">
-        <img src="{{asset('storage/' . $apartment->thumbnail) }}" class="card-img-top rounded" style="width: 20%" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{$apartment->title}}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="{{ Route('admin.apartments.edit', $apartment->slug)}}" class="btn btn-outline-primary">EDIT</a>
-          <small class="d-block mt-4">Di:
-              {{$apartment->user->name}}
-          </small>
+    <div class="container">
+        <div class="card-index-apartment-box">
+            <!--Foreach per ciclare gli appartamenti in $apartments-->
+            @foreach ($apartments as $apartment)
+                <div class="card">
+                    <div class="row row-cols-2 flex-row justify-content-between align-items-center">
+                        <div class="col">
+                            <img src="{{ asset('storage/' . $apartment->thumbnail) }}" alt="{{ $apartment->title }}">
+                        </div>
+                        <div class="col">
+                            <h5 class="card-title">{{ $apartment->title }}</h5>
+                            <p class="card-description">{{ $apartment->address }}</p>
+                            {{-- Proprietario dell'appartamento --}}
+                            <p class="card-description">Host:
+                                {{ $apartment->user->name }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-content-hover">
+                        <div class="row row-cols-1 row-cols-md-3 h-100 align-items-center">
+                            <div class="col">
+                                <div class="text-center">
+                                    <h5 class="card-title">{{ $apartment->title }}</h5>
+                                    <p class="card-description">{{ $apartment->address }}</p>
+                                    {{-- Proprietario dell'appartamento --}}
+                                    <p class="card-description">Host:
+                                        {{ $apartment->user->name }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- Servizi -->
+                                <p class="card-description fw-bold">
+                                    Ecco i servizi che sono inclusi nel tuo appartamento:
+                                </p>
+                                <!--Foreach per ciclare sui serivizi dei singoli appartamenti -->
+                                @foreach ($apartment->services as $key => $service)
+                                    <span class="card-description">
+                                        {{ $service->title }}
+                                        @if (!$loop->last)
+                                            -
+                                        @endif
+                                    </span>
+                                @endforeach
+                            </div>
+                            <div class="col">
+                                <div class="text-center text-uppercase">
+                                    {{-- Pulsante modifica --}}
+                                    <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
+                                        class="btn btn-outline-primary">Modifica</a>
+                                    {{-- Pulsante promuovi --}}
+                                    <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
+                                        class="btn btn-outline-primary">Sponsorizza</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </div>
-    @endforeach
-  </div>
-
+    </div>
 @endsection
