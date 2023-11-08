@@ -237,6 +237,13 @@ h6 {
     top: 25%;
     right: 3%;
 }
+.list-group-item{
+    cursor: pointer;
+    &:hover{
+        color: #fff;
+        background-color: #e55812;
+    }
+}
 
 // Card index apartment
 .card-index-apartment-box {
