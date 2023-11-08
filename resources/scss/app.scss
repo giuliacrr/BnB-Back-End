@@ -100,11 +100,11 @@ h6 {
     // Campi di input
     .form-control,
     .form-select {
-        color: $grey;
+        color: $primary-color;
         background-color: rgb(192, 190, 180, 0.2);
         border: var(--bs-border-width) solid #c1bfb5;
         &:focus {
-            color: $grey;
+            color: white;
             background-color: rgb(192, 190, 180, 0.2);
             font-weight: bold;
             border-color: $primary-color;
