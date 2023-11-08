@@ -140,7 +140,7 @@ h6 {
 
     // Etichetta campi
     .form-label {
-        margin-top: 0.5rem;
+        margin-top: .5rem;
         color: $primary-color;
     }
 
@@ -211,8 +211,8 @@ h6 {
     .error-apartment-form {
         color: $partial-secondary-color;
         position: absolute;
-        top: -31px;
-        left: 5%;
+        top: -10px;
+        left: 0;
         z-index: 2;
         font-style: italic;
         font-size: 0.7rem;
