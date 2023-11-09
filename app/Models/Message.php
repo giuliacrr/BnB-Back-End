@@ -10,11 +10,12 @@ class Message extends Model
     use HasFactory;
 
     // Create an array indicating the columns to populate
-    protected $fillable = [
-        "name",
-        "email",
-        "message_text"
-    ];
+    // protected $fillable = [
+    //     "name",
+    //     "email",
+    //     "message_text",
+    //     "apartment_id"
+    // ];
 
     public function apartment()
     {
