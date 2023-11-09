@@ -30,7 +30,7 @@ class MessageController extends Controller
         $newMessage->name = $data["name"];
         $newMessage->email = $data["email"];
         $newMessage->message_text = $data["message_text"];
-        $newMessage->apartment()->attach($apartment->id);
+        $newMessage->apartment()->associate($apartment->id);
         // $newMessage->fill($data);
         $newMessage->save();
         //Inviare l'email al cliente
