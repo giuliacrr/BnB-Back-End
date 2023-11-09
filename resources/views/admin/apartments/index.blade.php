@@ -52,7 +52,7 @@
                                     <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
                                         class="btn btn-outline-primary">Modifica</a>
                                     {{-- Pulsante promuovi --}}
-                                    <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
+                                    <a href="{{ Route('payment.show', $apartment->slug) }}"
                                         class="btn btn-outline-primary">Sponsorizza</a>
                                 </div>
                             </div>
