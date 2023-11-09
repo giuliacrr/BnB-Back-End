@@ -19,6 +19,7 @@ class ApartmentController extends Controller
     $beds_number = $request->input('beds_number');
     $bathrooms_number = $request->input('bathrooms_number');
     $services = $request->input('services');
+    $sponsorships = $request->input('sponsorships');
     $lat = 0;
     $lon = 0;
     $radius = $request->input('radius'); // Raggio in chilometri
@@ -74,6 +75,13 @@ class ApartmentController extends Controller
       $query->whereHas('services', function ($q) use ($services) {
         $q->whereIn('service_id', $services);
       });
+    }
+
+    if ($sponsorships && $sponsorships == 1){
+      $query->whereHas('sponsorships', function ($q) {
+        $now = now(); // Data e ora attuali
+        $q->where('start_date_time', '<=', $now)->where('end_date_time', '>=', $now);
+    });
     }
 
     $apartments = $query
