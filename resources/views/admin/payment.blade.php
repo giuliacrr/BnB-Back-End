@@ -5,6 +5,7 @@
 <form action="{{ route('payment.success') }}" method="post">
   @csrf
   <input type="hidden" name="apartment_id" value="{{ $apartment->id }}">
+  <input type="hidden" name="token" value="{{ $random }}">
 
   <div class="container mt-5">
     <div class="row">
