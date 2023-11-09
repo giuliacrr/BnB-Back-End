@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewContact;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -24,5 +26,7 @@ class MessageController extends Controller
         $newMessage = new Message();
         $newMessage->fill($data);
         $newMessage->save();
+
+        Mail::to($data['email'])->send(new NewContact($data));
     }
 }
