@@ -73,15 +73,19 @@ class ApartmentController extends Controller
 
     if ($services) {
       $query->whereHas('services', function ($q) use ($services) {
-        $q->whereIn('service_id', $services);
+        if (is_array($services)) {
+          $q->whereIn('service_id', $services);
+        } else {
+          $q->where('service_id', $services);
+        }
       });
     }
 
-    if ($sponsorships && $sponsorships == 1){
+    if ($sponsorships && $sponsorships == 1) {
       $query->whereHas('sponsorships', function ($q) {
         $now = now(); // Data e ora attuali
         $q->where('start_date_time', '<=', $now)->where('end_date_time', '>=', $now);
-    });
+      });
     }
 
     $apartments = $query
