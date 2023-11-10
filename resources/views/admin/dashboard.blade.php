@@ -61,7 +61,7 @@
                                     <div class="col">
                                         <div class="d-flex justify-content-center h-100">
                                             <div class="card">
-                                                <a class="card-title" href="{{ Route('admin.apartments.create') }}">
+                                                <a class="card-title" href="{{ Route('admin.messages') }}">
                                                     Visualizza tutti i messaggi
                                                 </a>
                                                 <p class="card-content">
