@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card-index-apartment-box">
+            <h1 class="form-apartment-title">I tuoi appartamenti</h1>
             <!--Foreach per ciclare gli appartamenti in $apartments-->
             @foreach ($apartments as $apartment)
                 <div class="card">
@@ -33,7 +34,7 @@
                             </div>
                             <div class="col">
                                 <!-- Servizi -->
-                                <p class="card-description fw-bold">
+                                <p class="card-description fw-bold s-text-color">
                                     Ecco i servizi che sono inclusi nel tuo appartamento:
                                 </p>
                                 <!--Foreach per ciclare sui serivizi dei singoli appartamenti -->

@@ -156,7 +156,7 @@
                 @enderror
             </div>
             {{-- button --}}
-            <button type="submit" class="btn btn-primary me-1 mt-4">Salva</button>
+            <button type="submit" class="btn  me-1 mt-4 btn-success">Salva</button>
             <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mt-4">Annulla</a>
         </div>
     </form>
@@ -166,8 +166,8 @@
             @csrf
             @method('DELETE')
 
-            <button class="btn btn-primary">
-                <i class="fa-regular fa-trash-can"></i>
+            <button class="btn btn-danger">
+                <i class="fa-regular fa-trash-can "></i>
             </button>
         </form>
     @endif
