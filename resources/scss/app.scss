@@ -40,10 +40,11 @@ $primary-color: #d6d3c8;
 .ps-bg-color{//Partial secondary - orange
     background-color:$partial-secondary-color
 }
+
 //---------
 body {
-    background: rgb(231,133,98);
-    background: linear-gradient(126deg, rgba(231,133,98,1) 0%, rgba(121,162,171,1) 25%, rgba(22,105,122,1) 50%, rgba(44,44,44,1) 75%, rgba(0,0,0,1) 100%);  
+    background: rgb(232,157,130);
+    background: linear-gradient(180deg, rgba(232,157,130,1) 0%, rgba(231,133,98,1) 25%, rgba(118,163,172,1) 45%, rgba(22,105,122,1) 64%, rgba(44,44,44,1) 83%, rgba(0,0,0,1) 100%);
     min-height: 100vh;
 }
 
@@ -60,6 +61,14 @@ h6 {
     color: $partial-secondary-color !important;
 }
 
+//NAV LINKS TEXT GRADIENT COLOR
+.nav-link {
+    font-size: 2rem;
+    background: -webkit-linear-gradient(0deg, $partial-secondary-color, $secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+//---
 .btn-outline-primary {
     --bs-btn-color: #e78562;
     --bs-btn-border-color: #e78562;
@@ -295,11 +304,11 @@ h6 {
         position: relative;
         height: 250px;
         margin: 1.8rem auto;
-        background-color: #f2f2f2;
+        background-color: $partial-primary-color;
         border-radius: 10px;
         overflow: hidden;
         perspective: 1000px;
-        box-shadow: 0 0 0 5px #ffffff80;
+        box-shadow: 0 0 0 5px $primary-color;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
         p {
@@ -333,7 +342,7 @@ h6 {
         height: 100%;
         padding: 20px;
         box-sizing: border-box;
-        background-color: #f2f2f2;
+        background-color: $partial-primary-color;
         transform: rotateX(-90deg);
         transform-origin: bottom;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -346,7 +355,7 @@ h6 {
     .card-title {
         margin: 0;
         font-size: 20px;
-        color: #333;
+        color: $grey;
         font-weight: 700;
 
 
@@ -355,7 +364,7 @@ h6 {
     .card-description {
         margin: 10px 0 10px;
         font-size: 12px;
-        color: #777;
+        color: $primary-color;
         line-height: 1.4;
     }
 }
@@ -363,13 +372,13 @@ h6 {
 // Dashboard
 .dashboard-header {
     .card {
-        background-color: rgba(22, 105, 121, 0.1);
-        border-color: #e55812;
+        background-color: rgba(255, 255, 255, 0.213);
+        border:2px dashed $partial-primary-color;
     }
 
     .card-header {
-        color: $primary-color;
-        background-color: $secondary-color;
+        color: $secondary-color;
+        background-color: $partial-primary-color;
         font-weight: bold;
     }
 
@@ -397,7 +406,7 @@ h6 {
         transition: all 0.2s;
 
         .card-title {
-            color: var(--primary-color);
+            color: $partial-secondary-color;
             text-decoration: none;
             padding: 0;
             font-size: 1rem;
@@ -407,7 +416,7 @@ h6 {
 
         }
         .card-content {
-            color: var(--secondary-color);
+            color: $grey;
             font-size: 0.86rem;
             font-weight: normal;
             text-transform: none;
@@ -415,7 +424,7 @@ h6 {
 
         .card-arrow {
             position: absolute;
-            background: var(--primary-color);
+            background: $partial-secondary-color;
             padding: 0.4rem;
             border-top-left-radius: var(--border-radius);
             border-bottom-right-radius: var(--border-radius);
@@ -440,7 +449,10 @@ h6 {
             }
 
             .card-arrow {
-                background: $partial-primary-color;
+                background: $secondary-color;
+            }
+            .card-content {
+                color:$partial-primary-color;
             }
 
             .card-arrow svg {
