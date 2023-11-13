@@ -10,35 +10,35 @@ $primary-color: #d6d3c8;
 
 //-------------------TEXT COLORS-------------------
 .grey-text-color {//Grey
-    color:$grey;
+    color:$grey!important;
 }
 .p-text-color {//Primary - Silver
-    color:$primary-color;
+    color:$primary-color!important;
 }
 .pp-text-color {//Partial primary - White
-    color:$partial-primary-color;
+    color:$partial-primary-color!important;
 }
 .s-text-color {//Secondary - Blue
-    color: $secondary-color;
+    color: $secondary-color!important;
 }
 .ps-text-color{//Partial secondary - orange
-    color:$partial-secondary-color
+    color:$partial-secondary-color!important;
 }
 //-------------------BACKGROUND COLORS-------------------
 .grey-bg-color {//Grey
-    background-color:$grey;
+    background-color:$grey!important;
 }
 .p-bg-color {//Primary - Silver
-    background-color:$primary-color;
+    background-color:$primary-color!important;
 }
 .pp-bg-color {//Partial primary - White
-    background-color:$partial-primary-color;
+    background-color:$partial-primary-color!important;
 }
 .s-bg-color {//Secondary - Blue
-    background-color: $secondary-color;
+    background-color: $secondary-color!important;
 }
 .ps-bg-color{//Partial secondary - orange
-    background-color:$partial-secondary-color
+    background-color:$partial-secondary-color!important;
 }
 
 //---------
@@ -63,7 +63,7 @@ h6 {
 
 //NAV LINKS TEXT GRADIENT COLOR
 .nav-link {
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: -webkit-linear-gradient(0deg, $partial-secondary-color, $secondary-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -73,8 +73,8 @@ h6 {
     --bs-btn-color: #e78562;
     --bs-btn-border-color: #e78562;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #e78562;
-    --bs-btn-hover-border-color: #e78562;
+    --bs-btn-hover-bg: #16697a;
+    --bs-btn-hover-border-color: #16697a;
     --bs-btn-focus-shadow-rgb: 144, 12, 63;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #e78562;
@@ -106,7 +106,7 @@ h6 {
 */
 .form-apartment-title {
     text-align: center;
-    color: $partial-secondary-color;
+    color: $grey!important;
 }
 
 .apartament-form-box {
@@ -364,7 +364,7 @@ h6 {
     .card-description {
         margin: 10px 0 10px;
         font-size: 12px;
-        color: $primary-color;
+        color: $grey;
         line-height: 1.4;
     }
 }
