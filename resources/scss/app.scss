@@ -3,14 +3,54 @@
 
 //Palette
 $grey: #2c2c2c;
-$partial-primary-color: #553e4e;
+$partial-primary-color: #fff;
 $secondary-color: #16697a;
-$partial-secondary-color: #e55812;
+$partial-secondary-color: #e78562;
 $primary-color: #d6d3c8;
 
+//-------------------TEXT COLORS-------------------
+.grey-text-color {//Grey
+    color:$grey!important;
+}
+.p-text-color {//Primary - Silver
+    color:$primary-color!important;
+}
+.pp-text-color {//Partial primary - White
+    color:$partial-primary-color!important;
+}
+.s-text-color {//Secondary - Blue
+    color: $secondary-color!important;
+}
+.ps-text-color{//Partial secondary - orange
+    color:$partial-secondary-color!important;
+}
+//-------------------BACKGROUND COLORS-------------------
+.grey-bg-color {//Grey
+    background-color:$grey!important;
+}
+.p-bg-color {//Primary - Silver
+    background-color:$primary-color!important;
+}
+.pp-bg-color {//Partial primary - White
+    background-color:$partial-primary-color!important;
+}
+.s-bg-color {//Secondary - Blue
+    background-color: $secondary-color!important;
+}
+.ps-bg-color{//Partial secondary - orange
+    background-color:$partial-secondary-color!important;
+}
+
+//---------
 body {
-    background-color: $primary-color;
-    color: $primary-color;
+    background: rgb(232,157,130);
+    background: linear-gradient(180deg, rgba(232,157,130,1) 0%, rgba(231,133,98,1) 25%, rgba(118,163,172,1) 45%, rgba(22,105,122,1) 64%, rgba(44,44,44,1) 83%, rgba(0,0,0,1) 100%);
+    min-height: 100vh;
+}
+
+#app {
+    display:contents;
+    font-family: 'Playfair Display', serif;
 }
 
 h1,
@@ -22,36 +62,44 @@ h6 {
     color: $partial-secondary-color !important;
 }
 
+//NAV LINKS TEXT GRADIENT COLOR
+.nav-link {
+    font-size: 1.5rem;
+    background: -webkit-linear-gradient(0deg, $partial-secondary-color, $secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+//---
 .btn-outline-primary {
-    --bs-btn-color: #e55812;
-    --bs-btn-border-color: #e55812;
+    --bs-btn-color: #e78562;
+    --bs-btn-border-color: #e78562;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #e55812;
-    --bs-btn-hover-border-color: #e55812;
+    --bs-btn-hover-bg: #16697a;
+    --bs-btn-hover-border-color: #16697a;
     --bs-btn-focus-shadow-rgb: 144, 12, 63;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #e55812;
-    --bs-btn-active-border-color: #e55812;
-    --bs-btn-disabled-color: #e55812;
-    --bs-btn-disabled-border-color: #e55812;
+    --bs-btn-active-bg: #e78562;
+    --bs-btn-active-border-color: #e78562;
+    --bs-btn-disabled-color: #e78562;
+    --bs-btn-disabled-border-color: #e78562;
     transition: all 0.3s;
 }
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #e55812be;
-    --bs-btn-border-color: #e55812be;
-    --bs-btn-hover-color: #e55812;
+    --bs-btn-bg: #e78562be;
+    --bs-btn-border-color: #e78562be;
+    --bs-btn-hover-color: #e78562;
     --bs-btn-hover-bg: #16697a;
-    --bs-btn-hover-border-color: #e55812;
+    --bs-btn-hover-border-color: #e78562;
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #e55812;
+    --bs-btn-active-color: #e78562;
     --bs-btn-active-bg: #16697a;
-    --bs-btn-active-border-color: #e55812;
+    --bs-btn-active-border-color: #e78562;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #16697a;
-    --bs-btn-disabled-bg: #e55812be;
-    --bs-btn-disabled-border-color: #e55812be;
+    --bs-btn-disabled-bg: #e78562be;
+    --bs-btn-disabled-border-color: #e78562be;
 }
 
 /*
@@ -59,7 +107,7 @@ h6 {
 */
 .form-apartment-title {
     text-align: center;
-    color: $partial-secondary-color;
+    color: $grey!important;
 }
 
 .apartament-form-box {
@@ -69,8 +117,8 @@ h6 {
     margin-bottom: 2rem;
     border-radius: 0.4rem;
     padding: 2rem;
-    box-shadow: 1px 1px 20px 1rem rgba(226, 88, 18, 0.5);
-    border: 1px solid rgba(226, 88, 18, 0.8);
+    box-shadow: 1px 1px 20px 1rem rgba(231, 135, 101, 0.5);
+    border: 1px solid rgba(231, 135, 101, 0.8);
 
     // Accordion
     .accordion-item {
@@ -100,7 +148,7 @@ h6 {
     // Campi di input
     .form-control,
     .form-select {
-        color: $primary-color;
+        color: $partial-primary-color;
         background-color: rgb(192, 190, 180, 0.2);
         border: var(--bs-border-width) solid #c1bfb5;
 
@@ -142,7 +190,7 @@ h6 {
     // Etichetta campi
     .form-label {
         margin-top: 0.5rem;
-        color: $primary-color;
+        color: $partial-primary-color;
     }
 
     .label-publish {
@@ -257,11 +305,11 @@ h6 {
         position: relative;
         height: 250px;
         margin: 1.8rem auto;
-        background-color: #f2f2f2;
+        background-color: $partial-primary-color;
         border-radius: 10px;
         overflow: hidden;
         perspective: 1000px;
-        box-shadow: 0 0 0 5px #ffffff80;
+        box-shadow: 0 0 0 5px $primary-color;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
         p {
@@ -295,7 +343,7 @@ h6 {
         height: 100%;
         padding: 20px;
         box-sizing: border-box;
-        background-color: #f2f2f2;
+        background-color: $partial-primary-color;
         transform: rotateX(-90deg);
         transform-origin: bottom;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -308,7 +356,7 @@ h6 {
     .card-title {
         margin: 0;
         font-size: 20px;
-        color: #333;
+        color: $grey;
         font-weight: 700;
 
 
@@ -317,7 +365,7 @@ h6 {
     .card-description {
         margin: 10px 0 10px;
         font-size: 12px;
-        color: #777;
+        color: $grey;
         line-height: 1.4;
     }
 }
@@ -325,13 +373,13 @@ h6 {
 // Dashboard
 .dashboard-header {
     .card {
-        background-color: rgba(22, 105, 121, 0.1);
-        border-color: #e55812;
+        background-color: rgba(255, 255, 255, 0.213);
+        border:2px dashed $partial-primary-color;
     }
 
     .card-header {
-        color: $primary-color;
-        background-color: $secondary-color;
+        color: $secondary-color;
+        background-color: $partial-primary-color;
         font-weight: bold;
     }
 
@@ -359,7 +407,7 @@ h6 {
         transition: all 0.2s;
 
         .card-title {
-            color: var(--primary-color);
+            color: $partial-secondary-color;
             text-decoration: none;
             padding: 0;
             font-size: 1rem;
@@ -369,7 +417,7 @@ h6 {
 
         }
         .card-content {
-            color: var(--secondary-color);
+            color: $grey;
             font-size: 0.86rem;
             font-weight: normal;
             text-transform: none;
@@ -377,7 +425,7 @@ h6 {
 
         .card-arrow {
             position: absolute;
-            background: var(--primary-color);
+            background: $partial-secondary-color;
             padding: 0.4rem;
             border-top-left-radius: var(--border-radius);
             border-bottom-right-radius: var(--border-radius);
@@ -402,7 +450,10 @@ h6 {
             }
 
             .card-arrow {
-                background: $partial-primary-color;
+                background: $secondary-color;
+            }
+            .card-content {
+                color:$partial-primary-color;
             }
 
             .card-arrow svg {

@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1 class="fs-2 my-4">
-            {{ Auth::user()->name ?? 'User' }} ecco la tua Dashboard!
+        <h1 class="fs-2 my-4 text-white">
+            {{ Auth::user()->name ?? 'User' }}, ecco la tua Dashboard!
         </h1>
         <div class="row justify-content-center">
             <div class="col">
@@ -20,10 +20,10 @@
                                         <div class="d-flex justify-content-center h-100">
                                             <a class="card" href="{{ Route('admin.apartments.index') }}">
                                                 <p class="card-title">
-                                                    Visualizza tutte le tue strutture
+                                                    strutture
                                                 </p>
                                                 <p class="card-content">
-                                                    Esplora la tua lista di strutture.
+                                                    Visualizza ed esplora la tua lista di strutture.
                                                 </p>
                                                 <div class="card-arrow">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -41,10 +41,10 @@
                                         <div class="d-flex justify-content-center h-100">
                                             <a class="card" href="{{ Route('admin.apartments.create') }}">
                                                 <p class="card-title">
-                                                    Aggiungi una nuova struttura
+                                                    Aggiungi struttura
                                                 </p>
                                                 <p class="card-content">
-                                                    Rendi il tuo spazio un'esperienza: fai il primo passo ora.
+                                                    Fai il primo passo ora e aggiungi una nuova struttura.
                                                 </p>
                                                 <div class="card-arrow">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -62,10 +62,10 @@
                                         <div class="d-flex justify-content-center h-100">
                                             <a class="card" href="{{ Route('admin.messages') }}">
                                                 <p class="card-title">
-                                                    Visualizza tutti i messaggi
+                                                    messaggi
                                                 </p>
                                                     <p class="card-content">
-                                                        Consulta la tua bacheca dei messaggi.
+                                                        Consulta la tua bacheca dei messaggi per ogni singolo appartamento.
                                                     </p>
                                                 <div class="card-arrow">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"

@@ -88,6 +88,7 @@ class ApartmentController extends Controller
       });
     }
 
+<<<<<<< HEAD
     if ($lat && $lon) {
       // Calcolo la distanza e ordino gli appartamenti in base a essa
       $query->selectRaw(
@@ -108,12 +109,20 @@ class ApartmentController extends Controller
       return $apartment;
     });
 
+=======
+>>>>>>> f1a06ab8c41b654ec6b386a4f6420aa1516924c2
     // Recupera tutti i servizi
     $allServices = Service::all();
+
+    // Paginazione
+    $apartments = $query
+      ->with('services', 'sponsorships')
+      ->paginate(10);
 
     return response()->json([
       'apartments' => $apartments,
       'services' => $allServices,
+      'count' => $apartments->total(),
     ]);
   }
 

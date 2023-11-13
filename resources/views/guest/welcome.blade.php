@@ -11,21 +11,13 @@
                 </h1>
             </div>
 
-            <p class="col-md-9 fs-4">Congratulazioni per l'accesso con successo! Entra nel tuo mondo personale, dove le tue
+            <p class="col-md-9 fs-4 s-text-color">Congratulazioni per l'accesso con successo! Entra nel tuo mondo personale, dove le tue
                 esigenze e preferenze sono al centro di tutto. La tua dashboard accogliente ti offre un'ampia panoramica
                 delle ultime attività, notizie personalizzate e opzioni di navigazione intuitive. Dai un'occhiata alle nuove
                 funzionalità esclusive progettate solo per te e gestisci facilmente il tuo profilo. Siamo entusiasti di
                 averti qui e rendere la tua esperienza il più piacevole possibile. Goditi il tuo soggiorno nell'area
                 personale dedicata!</p>
                 <a type="button" class="btn btn-primary btn-lg" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora temporibus, dicta nemo aliquam totam nisi
-                deserunt soluta quas voluptatum ab beatae praesentium necessitatibus minus, facilis illum rerum officiis
-                accusamus dolores!</p>
         </div>
     </div>
 @endsection
