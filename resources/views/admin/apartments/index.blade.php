@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card-index-apartment-box">
+            <h1 class="form-apartment-title">I tuoi appartamenti</h1>
             <!--Foreach per ciclare gli appartamenti in $apartments-->
             @foreach ($apartments as $apartment)
                 <div class="card">
