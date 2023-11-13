@@ -33,7 +33,7 @@
                             </div>
                             <div class="col">
                                 <!-- Servizi -->
-                                <p class="card-description fw-bold">
+                                <p class="card-description fw-bold s-text-color">
                                     Ecco i servizi che sono inclusi nel tuo appartamento:
                                 </p>
                                 <!--Foreach per ciclare sui serivizi dei singoli appartamenti -->
