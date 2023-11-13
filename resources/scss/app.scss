@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: $partial-secondary-color;
+    color: $partial-secondary-color !important;
 }
 
 .btn-outline-primary {
@@ -103,6 +103,7 @@ h6 {
         color: $primary-color;
         background-color: rgb(192, 190, 180, 0.2);
         border: var(--bs-border-width) solid #c1bfb5;
+
         &:focus {
             color: white;
             background-color: rgb(192, 190, 180, 0.2);
@@ -198,8 +199,8 @@ h6 {
         transition: stroke-dashoffset 0.3s ease-in;
     }
 
-    .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-box,
-    .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-tick {
+    .checkbox-wrapper input[type="checkbox"]:checked+.terms-label .checkbox-box,
+    .checkbox-wrapper input[type="checkbox"]:checked+.terms-label .checkbox-tick {
         stroke-dashoffset: 0;
     }
 
@@ -237,8 +238,10 @@ h6 {
     top: 25%;
     right: 3%;
 }
+
 .list-group-item {
     cursor: pointer;
+
     &:hover {
         color: #fff;
         background-color: #e55812;
@@ -282,6 +285,8 @@ h6 {
         box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
     }
 
+
+
     .card-content-hover {
         position: absolute;
         top: 0;
@@ -305,6 +310,8 @@ h6 {
         font-size: 20px;
         color: #333;
         font-weight: 700;
+
+
     }
 
     .card-description {
@@ -319,7 +326,7 @@ h6 {
 .dashboard-header {
     .card {
         background-color: rgba(22, 105, 121, 0.1);
-        border-color: rgba(22, 104, 121, 0.3);
+        border-color: #e55812;
     }
 
     .card-header {
@@ -335,6 +342,7 @@ h6 {
 
 .dashboard-box {
     .card {
+        text-decoration: none;
         --border-radius: 0.75rem;
         --primary-color: #e55812;
         --secondary-color: #d6d3c8;
@@ -350,18 +358,21 @@ h6 {
         justify-content: center;
         transition: all 0.2s;
 
-        .card-content {
-            color: var(--secondary-color);
-            font-size: 0.86rem;
-        }
-
         .card-title {
             color: var(--primary-color);
+            text-decoration: none;
             padding: 0;
             font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
+
+        }
+        .card-content {
+            color: var(--secondary-color);
+            font-size: 0.86rem;
+            font-weight: normal;
+            text-transform: none;
         }
 
         .card-arrow {
@@ -398,5 +409,88 @@ h6 {
                 transform: translateX(3px);
             }
         }
+    }
+}
+
+
+/* Payment page*/
+
+
+.payment-card {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    background: #f5f5f5;
+    border: 2px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    text-align: center;
+    position: relative;
+    min-height: 100%;
+
+    .promo-img {
+        background-color: $partial-primary-color;
+        margin-left: auto;
+        position: relative;
+        padding: 1rem;
+        width: 100%;
+        max-width: 100px !important;
+        height: 100px !important;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 50%;
+        transition: ease-out .5s;
+
+        img {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            max-width: 80px;
+            width: 100%;
+        }
+    }
+
+    button {
+
+        transform: translate(-50%, 125%);
+        width: 40%;
+        border-radius: 1rem;
+        border: none;
+        background-color: $partial-secondary-color;
+        color: #fff;
+        font-size: 1rem;
+        padding: .5rem;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.3s ease-out;
+    }
+
+    .card-text {
+        padding: 1.8rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    &:hover {
+        border-color: $secondary-color;
+        filter: blur(100%);
+        box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+
+        .promo-img {
+            background-color: $secondary-color;
+            filter: brightness(100%);
+        }
+
+        .card-footer {
+            display: flex !important;
+            justify-content: center;
+
+
+        }
+
+        button {
+            transform: translate(-50%, 50%);
+            opacity: 1;
+        }
+
     }
 }
