@@ -164,7 +164,7 @@
     <!-- Aggiungi il tuo script JavaScript per Braintree qui -->
     <script>
         var button = document.querySelector('#submit-button');
-        var packageButton = document.getElementsByClassName('btn-package');
+        var packageButton = document.querySelectorAll('.btn-package')
         //var packageSelect = document.querySelector('#sponsorship_id');
         var apartmentId = document.querySelector('input[name="apartment_id"]');
         var selectedPackage;
