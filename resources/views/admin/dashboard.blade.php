@@ -60,8 +60,8 @@
                                     {{-- Visualizza i messaggi relativi agli appartamenti --}}
                                     <div class="col">
                                         <div class="d-flex justify-content-center h-100">
-                                            <div class="card">
-                                                <a class="card-title" href="{{ Route('admin.messages') }}">
+                                            <a class="card" href="{{ Route('admin.messages') }}">
+                                                <p class="card-title">
                                                     Visualizza tutti i messaggi
                                                 </p>
                                                     <p class="card-content">
