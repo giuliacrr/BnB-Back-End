@@ -88,9 +88,25 @@ class ApartmentController extends Controller
       });
     }
 
+    if ($lat && $lon) {
+      // Calcolo la distanza e ordino gli appartamenti in base a essa
+      $query->selectRaw(
+        "*, 6371 * ACOS(
+              COS(RADIANS($lat)) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS($lon))
+              + SIN(RADIANS($lat)) * SIN(RADIANS(latitude))
+          ) as distance"
+      )->orderByRaw('distance ASC');
+    }
+
     $apartments = $query
       ->with('services', 'sponsorships')
       ->get();
+
+    // Aggiungi la distanza al risultato
+    $apartments = $apartments->map(function ($apartment) use ($lat, $lon) {
+      $apartment->distance_km = $this->calculateDistance($lat, $lon, $apartment->latitude, $apartment->longitude);
+      return $apartment;
+    });
 
     // Recupera tutti i servizi
     $allServices = Service::all();
@@ -108,5 +124,18 @@ class ApartmentController extends Controller
       ->first();
 
     return response()->json($apartment);
+  }
+  public function calculateDistance($lat1, $lon1, $lat2, $lon2)
+  {
+    $theta = $lon1 - $lon2;
+    $distance = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+    $distance = acos($distance);
+    $distance = rad2deg($distance);
+    $distance = $distance * 60 * 1.1515; // in miglia
+
+    // Conversione da miglia a chilometri
+    $distance = $distance * 1.609344;
+
+    return $distance;
   }
 }
