@@ -18,10 +18,10 @@
                                     {{-- Visualizza tutte le tue strutture --}}
                                     <div class="col">
                                         <div class="d-flex justify-content-center h-100">
-                                            <div class="card">
-                                                <a class="card-title" href="{{ Route('admin.apartments.index') }}">
+                                            <a class="card" href="{{ Route('admin.apartments.index') }}">
+                                                <p class="card-title">
                                                     Visualizza tutte le tue strutture
-                                                </a>
+                                                </p>
                                                 <p class="card-content">
                                                     Esplora la tua lista di strutture.
                                                 </p>
@@ -33,16 +33,16 @@
                                                         </path>
                                                     </svg>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                     {{-- Aggiungi una nuova struttura --}}
                                     <div class="col">
                                         <div class="d-flex justify-content-center h-100">
-                                            <div class="card">
-                                                <a class="card-title" href="{{ Route('admin.apartments.create') }}">
+                                            <a class="card" href="{{ Route('admin.apartments.create') }}">
+                                                <p class="card-title">
                                                     Aggiungi una nuova struttura
-                                                </a>
+                                                </p>
                                                 <p class="card-content">
                                                     Rendi il tuo spazio un'esperienza: fai il primo passo ora.
                                                 </p>
@@ -54,19 +54,19 @@
                                                         </path>
                                                     </svg>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                     {{-- Visualizza i messaggi relativi agli appartamenti --}}
                                     <div class="col">
                                         <div class="d-flex justify-content-center h-100">
-                                            <div class="card">
-                                                <a class="card-title" href="{{ Route('admin.messages') }}">
+                                            <a class="card" href="{{ Route('admin.messages') }}">
+                                                <p class="card-title">
                                                     Visualizza tutti i messaggi
-                                                </a>
-                                                <p class="card-content">
-                                                    Consulta la tua bacheca dei messaggi.
                                                 </p>
+                                                    <p class="card-content">
+                                                        Consulta la tua bacheca dei messaggi.
+                                                    </p>
                                                 <div class="card-arrow">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" height="15" width="15">
@@ -75,7 +75,7 @@
                                                         </path>
                                                     </svg>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
