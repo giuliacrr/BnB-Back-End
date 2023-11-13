@@ -88,16 +88,18 @@ class ApartmentController extends Controller
       });
     }
 
-    $apartments = $query
-      ->with('services', 'sponsorships')
-      ->get();
-
     // Recupera tutti i servizi
     $allServices = Service::all();
+
+    // Paginazione
+    $apartments = $query
+      ->with('services', 'sponsorships')
+      ->paginate(10);
 
     return response()->json([
       'apartments' => $apartments,
       'services' => $allServices,
+      'count' => $apartments->total(),
     ]);
   }
 
