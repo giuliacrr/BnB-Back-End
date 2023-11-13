@@ -70,4 +70,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.userData = {!! json_encode(['userName' => $userName]) !!};
+</script>
+
 @endsection

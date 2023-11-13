@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: $partial-secondary-color!important;
+    color: $partial-secondary-color !important;
 }
 
 .btn-outline-primary {
@@ -310,6 +310,8 @@ h6 {
         font-size: 20px;
         color: #333;
         font-weight: 700;
+
+
     }
 
     .card-description {
@@ -324,7 +326,7 @@ h6 {
 .dashboard-header {
     .card {
         background-color: rgba(22, 105, 121, 0.1);
-        border-color: rgba(22, 104, 121, 0.3);
+        border-color: #e55812;
     }
 
     .card-header {
@@ -340,6 +342,7 @@ h6 {
 
 .dashboard-box {
     .card {
+        text-decoration: none;
         --border-radius: 0.75rem;
         --primary-color: #e55812;
         --secondary-color: #d6d3c8;
@@ -355,18 +358,21 @@ h6 {
         justify-content: center;
         transition: all 0.2s;
 
-        .card-content {
-            color: var(--secondary-color);
-            font-size: 0.86rem;
-        }
-
         .card-title {
             color: var(--primary-color);
+            text-decoration: none;
             padding: 0;
             font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
+
+        }
+        .card-content {
+            color: var(--secondary-color);
+            font-size: 0.86rem;
+            font-weight: normal;
+            text-transform: none;
         }
 
         .card-arrow {
@@ -421,25 +427,27 @@ h6 {
     position: relative;
     min-height: 100%;
 
-    .promo-img{
+    .promo-img {
         background-color: $partial-primary-color;
         margin-left: auto;
         position: relative;
         padding: 1rem;
         width: 100%;
-        max-width: 100px!important;
-        height: 100px!important;
-        border-top-right-radius:15px;
+        max-width: 100px !important;
+        height: 100px !important;
+        border-top-right-radius: 15px;
         border-bottom-left-radius: 50%;
         transition: ease-out .5s;
-        img{
+
+        img {
             position: absolute;
             top: 5px;
             right: 8px;
             max-width: 80px;
-            width:100%;
+            width: 100%;
         }
     }
+
     button {
 
         transform: translate(-50%, 125%);
@@ -457,9 +465,9 @@ h6 {
         transition: 0.3s ease-out;
     }
 
-    .card-text{
+    .card-text {
         padding: 1.8rem 1rem;
-        font-size: 1.2rem; 
+        font-size: 1.2rem;
     }
 
     &:hover {
@@ -467,7 +475,7 @@ h6 {
         filter: blur(100%);
         box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 
-        .promo-img{
+        .promo-img {
             background-color: $secondary-color;
             filter: brightness(100%);
         }
@@ -478,6 +486,7 @@ h6 {
 
 
         }
+
         button {
             transform: translate(-50%, 50%);
             opacity: 1;
