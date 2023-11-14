@@ -40,7 +40,6 @@ $primary-color: #d6d3c8;
 .ps-bg-color{//Partial secondary - orange
     background-color:$partial-secondary-color!important;
 }
-
 //---------
 body {
     background: rgb(232,157,130);
@@ -51,6 +50,10 @@ body {
 #app {
     display:contents;
     font-family: 'Playfair Display', serif;
+}
+
+.succ-pay-mex{
+    color: $grey!important;
 }
 
 h1,
