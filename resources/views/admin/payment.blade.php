@@ -9,13 +9,13 @@
   <div class="container mt-5">
 
 
-    <div class="row row-cols-1 row-cols-lg-3 g-4">
+    <div class="row row-cols-1 row-cols-lg-3 g-5">
       <label for="sponsorship_id" class="text-dark text-center w-100 display-2">Seleziona il pacchetto:</label>
       <div class="col">
         {{-- Payment card 2.99 --}}
         <div class="card payment-card">
           <div class="d-flex">
-            <h2 class="card-title ms-auto text-md-start pt-3 px-3 fw-bold">Promo Casa Accogliente</h2>
+            <h2 class="card-title mx-auto text-md-start">Promo Casa Accogliente</h2>
             <div class="promo-img">
               <img src="/promo_logo_bronze.png" alt="">
             </div>
@@ -46,7 +46,7 @@
         {{-- Payment card 5.99 --}}
         <div class="card payment-card">
           <div class="d-flex">
-            <h2 class="card-title ms-auto text-md-start fw-bold px-3 pt-3">Promo Eleganza Urbana</h2>
+            <h2 class="card-title mx-auto text-md-start">Promo Eleganza Urbana</h2>
             <div class="promo-img">
               <img src="/promo_logo_silver.png" alt="">
             </div>
@@ -79,7 +79,7 @@
         {{-- Payment card 9.99 --}}
         <div class="card payment-card">
           <div class="d-flex">
-            <h2 class="card-title ms-auto text-start fw-bold px-3 pt-3">Promo Lusso Residenziale</h2>
+            <h2 class="card-title mx-auto text-md-start">Promo Lusso Residenziale</h2>
             <div class="promo-img">
               <img src="/promo_logo_gold.png" alt="">
             </div>
@@ -107,17 +107,6 @@
       </div>
     </div>
 
-    {{-- <div>
-      <label for="sponsorship_id" class="text-dark text-center w-100">Seleziona il pacchetto:</label>
-      <select name="sponsorship_id" id="sponsorship_id" class="form-select">
-        <option value="1">2,99 € per 24 ore di sponsorizzazione</option>
-        <option value="2">5.99 € per 72 ore di sponsorizzazione</option>
-        <option value="3">9.99 € per 144 ore di sponsorizzazione</option>
-      </select>
-    </div> --}}
-
-
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -130,42 +119,25 @@
             <div class="d-flex">
               <div>
                 <!-- Aggiungi il tuo elemento fornito da Braintree qui -->
-                <script src="https://js.braintreegateway.com/web/dropin/1.40.2/js/dropin.js"></script>
-                <div id="dropin-container"></div>
-
-
+                <div id="dropin-container"></div>                
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button id="submit-button" class="btn btn-primary">Acquista!</button>
-
           </div>
         </div>
       </div>
     </div>
-
-    {{-- Braintree --}}
-
-    {{-- <div class="d-flex">
-      <div>
-        <!-- Aggiungi il tuo elemento fornito da Braintree qui -->
-        <script src="https://js.braintreegateway.com/web/dropin/1.40.2/js/dropin.js"></script>
-        <div id="dropin-container"></div>
-
-        <button id="submit-button" class="btn btn-success">Purchase</button>
-
-      </div>
-    </div> --}}
-
-</form>
-
-<!-- Aggiungi il tuo script JavaScript per Braintree qui -->
-<script>
-  let button = document.querySelector('#submit-button');
-        let packageButton = document.querySelectorAll('.btn-package')
-        //let packageSelect = document.querySelector('#sponsorship_id');
+    
+  </form>
+  
+  <!-- Aggiungi il tuo script JavaScript per Braintree qui -->
+  <script src="https://js.braintreegateway.com/web/dropin/1.40.2/js/dropin.js"></script>
+  <script>
+    let button = document.querySelector('#submit-button');
+    let packageButton = document.querySelectorAll('.btn-package')
         let apartmentId = document.querySelector('input[name="apartment_id"]');
         let selectedPackage;
 
