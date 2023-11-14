@@ -55,6 +55,9 @@
                                     {{-- Pulsante promuovi --}}
                                     <a href="{{ Route('payment.show', $apartment->slug) }}"
                                         class="btn btn-outline-primary">Sponsorizza</a>
+                                    {{-- Pulsante Statistiche --}}
+                                    <a href="{{ Route('admin.statistics.show', $apartment->slug) }}"
+                                        class="btn btn-outline-primary">Statistiche</a>
                                 </div>
                             </div>
                         </div>
