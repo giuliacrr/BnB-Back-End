@@ -7,16 +7,13 @@
                     <img src="/LogoBnb.png" alt="Logo" style="width:100px">
                 </div>
                 <h1 class="display-5 fw-bold">
-                    Welcome to your Personal Page
+                    Benvenuto! Pronto a diventare un Host?
                 </h1>
             </div>
 
-            <p class="col-md-9 fs-4 s-text-color">Congratulazioni per l'accesso con successo! Entra nel tuo mondo personale, dove le tue
-                esigenze e preferenze sono al centro di tutto. La tua dashboard accogliente ti offre un'ampia panoramica
-                delle ultime attività, notizie personalizzate e opzioni di navigazione intuitive. Dai un'occhiata alle nuove
-                funzionalità esclusive progettate solo per te e gestisci facilmente il tuo profilo. Siamo entusiasti di
-                averti qui e rendere la tua esperienza il più piacevole possibile. Goditi il tuo soggiorno nell'area
-                personale dedicata!</p>
+            <p class="col-md-9 fs-4 s-text-color">Benvenuto nella sezione dedicata ai proprietari degli immobili del nostro sito.<br>
+            Qui potrai registrarti o, se hai già un account, inserire le credenziali per poter aver accesso alle funzioni degli host di Bool-Bee'n'Bee.<br>
+            Potrai aggiungere nuovi appartamenti alla piattaforma, modificarli, sponsorizzarli e leggere tutti i messaggi ad essi relativi mandati dagli utenti che visitano la pagina del tuo immobile!</p>
                 <a type="button" class="btn btn-primary btn-lg" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
         </div>
     </div>

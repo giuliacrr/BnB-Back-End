@@ -51,7 +51,7 @@
                                 <div class="text-center text-uppercase">
                                     {{-- Pulsante modifica --}}
                                     <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
-                                        class="btn btn-outline-primary">Modifica</a>
+                                        class="btn btn-outline-primary">Modifica o Elimina</a>
                                     {{-- Pulsante promuovi --}}
                                     <a href="{{ Route('payment.show', $apartment->slug) }}"
                                         class="btn btn-outline-primary">Sponsorizza</a>
