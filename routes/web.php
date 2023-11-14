@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,7 @@ Route::middleware('auth')
     ->group(function () {
         Route::resource("apartments", ApartmentController::class);
         Route::get("messages", [MessageController::class, "index"])->name("messages");
+        Route::get("statistics/{slug}", [ViewController::class, "show"])->name("statistics.show");
     });
 
 Route::middleware('auth')->group(function () {
