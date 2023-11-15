@@ -3,7 +3,12 @@
 @section('content')
     <div class="container">
         <div class="card-index-apartment-box">
-            <h1 class="form-apartment-title">I tuoi appartamenti</h1>
+            <div class="d-flex justify-content-center align-items-center">
+                <h1 class="form-apartment-title me-2">I tuoi appartamenti</h1>
+                <a class="btn btn-primary btn-index-add-appartment ms-2" href="{{ Route('admin.apartments.create') }}">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
             <!--Foreach per ciclare gli appartamenti in $apartments-->
             <div class="d-flex flex-column-reverse">
                 @foreach ($apartments as $apartment)
