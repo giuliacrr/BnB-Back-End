@@ -27,8 +27,8 @@
                 <label class="form-label fw-bold">Numero di letti:</label>
                 <input type="number" min="1" name="beds_number" id="beds_number"
                     value="{{ old('beds_number', $apartment?->beds_number) }}"
-                    class="mb-3 form-control @error('beds_number') is-invalid @enderror" oninput="checkLength('beds_number')"
-                    required placeholder="*">
+                    class="mb-3 form-control @error('beds_number') is-invalid @enderror"
+                    oninput="checkLength('beds_number')" required placeholder="*">
                 @error('beds_number')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -136,8 +136,11 @@
             <input type="hidden" name="visibility" value="0">
             {{-- visibility checkbox --}}
             <div class="checkbox-wrapper">
+                {{-- <input class="form-check-input" type="checkbox" id="apartmentVisibilityCheck" name="visibility"
+                    value="1" {{ old('visibility', $apartment?->visibility) ? 'checked' : '' }}> --}}
                 <input class="form-check-input" type="checkbox" id="apartmentVisibilityCheck" name="visibility"
-                    value="1" {{ old('visibility', $apartment?->visibility) ? 'checked' : '' }}>
+                    value="1"
+                    {{ isset($apartment) ? (old('visibility', $apartment->visibility) ? 'checked' : '') : 'checked' }}>
                 <label class="terms-label" for="apartmentVisibilityCheck">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 200 200"
                         class="checkbox-svg">
