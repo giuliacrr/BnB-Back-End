@@ -9,11 +9,15 @@
                 @foreach ($apartments as $apartment)
                     <div class="card w-100">
                         <div class="row row-cols-2 flex-row justify-content-between align-items-center">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-6 position-relative">
+                                <div class="filter d-md-none text-center">
+                                    <h1 class="card-title">{{ $apartment->title }}</h1>
+                                    <p class="card-description">{{ $apartment->address }}</p>
+                                </div>
                                 <img src="{{ asset('storage/' . $apartment->thumbnail) }}" alt="{{ $apartment->title }}">
                             </div>
                             <div class="col">
-                                <h5 class="card-title">{{ $apartment->title }}</h5>
+                                <h3 class="card-title">{{ $apartment->title }}</h3>
                                 <p class="card-description">{{ $apartment->address }}</p>
                                 {{-- Proprietario dell'appartamento --}}
                                 <p class="card-description">Host:
@@ -22,49 +26,29 @@
                             </div>
                         </div>
                         <div class="card-content-hover">
-                            <a class="h-100 bg-dark" href="{{ 'http://localhost:5174/apartments/' . $apartment->slug }}">
-                                <div
-                                    class="row  row-cols-1 h-100 row-cols-md-3 align-items-center overflow-auto flex-column">
-                                    <div class="col">
+                            <div class="h-100 w-100">
+                                <a href="{{ 'http://localhost:5174/apartments/' . $apartment->slug }}"
+                                    class="text-decoration-none">
+                                    <div class="cover">
                                         <div class="text-center">
-                                            <h5 class="card-title display-1">{{ $apartment->title }}</h5>
+                                            <h1 class="card-title">{{ $apartment->title }}</h1>
                                             <p class="card-description">{{ $apartment->address }}</p>
-                                            {{-- Proprietario dell'appartamento --}}
-                                            <p class="card-description">Host:
-                                                {{ $apartment->user->name }}
-                                            </p>
                                         </div>
                                     </div>
-                                    {{-- <div class="col">
-                                  <!-- Servizi -->
-                                  <p class="card-description fw-bold s-text-color">
-                                        Ecco i servizi che sono inclusi nel tuo appartamento:
-                                    </p>
-                                    <!--Foreach per ciclare sui serivizi dei singoli appartamenti -->
-                                    @foreach ($apartment->services as $key => $service)
-                                        <span class="card-description">
-                                          {{ $service->title }}
-                                            @if (!$loop->last)
-                                            -
-                                            @endif
-                                          </span>
-                                    @endforeach
-                                  </div> --}}
-                                    <div class="col">
-                                        <div class="text-center text-uppercase">
-                                            {{-- Pulsante modifica --}}
-                                            <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
-                                                class="btn btn-outline-primary my-2 ">Modifica o Elimina</a>
-                                            {{-- Pulsante promuovi --}}
-                                            <a href="{{ Route('payment.show', $apartment->slug) }}"
-                                                class="btn btn-outline-primary my-2">Sponsorizza</a>
+                                </a>
+                                <div class="btn-container text-uppercase">
+                                    {{-- Pulsante modifica --}}
+                                    <a href="{{ Route('admin.apartments.edit', $apartment->slug) }}"
+                                        class="btn btn-outline-primary m-2 ">Modifica</a>
+                                    {{-- Pulsante promuovi --}}
+                                    <a href="{{ Route('payment.show', $apartment->slug) }}"
+                                        class="btn btn-outline-primary m-2">Sponsorizza</a>
                                     {{-- Pulsante Statistiche --}}
                                     <a href="{{ Route('admin.statistics.show', $apartment->slug) }}"
-                                        class="btn btn-outline-primary">Statistiche</a>
-                                        </div>
-                                    </div>
+                                        class="btn btn-outline-primary m-2">Statistiche</a>
                                 </div>
-                            </a>
+
+                            </div>
                         </div>
                     </div>
                 @endforeach
