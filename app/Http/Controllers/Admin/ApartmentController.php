@@ -7,6 +7,7 @@ use App\Http\Requests\ApartmentsStoreRequest;
 use App\Http\Requests\ApartmentsUpdateRequest;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\Sponsorship;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -40,7 +41,7 @@ class ApartmentController extends Controller
   public function index()
   {
     $user = Auth::user();   //trovo l'utente loggato
-    $apartments = $user->apartments;    //trovo gli appartamenti caricati dall'utente loggato
+    $apartments = $user->apartments()->with("sponsorships")->get();    //trovo gli appartamenti caricati dall'utente loggato
     return view('admin.apartments.index', compact("apartments"));
   }
 
