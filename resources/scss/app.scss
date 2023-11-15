@@ -75,7 +75,7 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-main{
+main {
   flex-grow: 1;
 }
 
@@ -332,73 +332,74 @@ h6 {
   margin-top: 3rem;
   margin-bottom: 3rem;
 
-  .card {
-    position: relative;
-    height: 250px;
-    margin: 1.8rem auto;
-    background-color: $partial-primary-color;
-    border-radius: 10px;
-    overflow: hidden;
-    perspective: 1000px;
-    box-shadow: 0 0 0 5px $primary-color;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    p {
-      color: $grey;
-    }
-
-    h5 {
-      color: $partial-secondary-color;
-    }
-
-    img {
-      width: 100%;
+    .card {
+      display: block;
+      position: relative!important;
       height: 250px;
-      object-fit: cover;
-      object-position: center;
+      margin: 1.8rem auto;
+      background-color: $partial-primary-color;
+      border-radius: 10px;
+      overflow: hidden;
+      perspective: 1000px;
+      box-shadow: 0 0 0 5px $primary-color;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      p {
+        color: $grey;
+      }
+
+      h5 {
+        color: $partial-secondary-color;
+      }
+
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+      }
     }
-  }
 
-  .card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-  }
-
+    .card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    }
 
 
-  .card-content-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: $partial-primary-color;
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
 
-  .card:hover .card-content-hover {
-    transform: rotateX(0deg);
-  }
+    .card-content-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: $partial-primary-color;
+      transform: rotateX(-90deg);
+      transform-origin: bottom;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-  .card-title {
-    margin: 0;
-    font-size: 20px;
-    color: $grey;
-    font-weight: 700;
+    .card:hover .card-content-hover {
+      transform: rotateX(0deg);
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 20px;
+      color: $grey;
+      font-weight: 700;
 
 
-  }
+    }
 
-  .card-description {
-    margin: 10px 0 10px;
-    font-size: 12px;
-    color: $grey;
-    line-height: 1.4;
-  }
+    .card-description {
+      margin: 10px 0 10px;
+      font-size: 12px;
+      color: $grey;
+      line-height: 1.4;
+    }
 }
 
 // Dashboard
@@ -511,13 +512,13 @@ h6 {
   position: relative;
   min-height: 100%;
 
-  .card-title{
-    padding-top:1rem;
+  .card-title {
+    padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 6.1rem;
     font-weight: bold;
   }
-    
+
   .promo-img {
     background-color: $partial-primary-color;
     margin-left: auto;
@@ -592,9 +593,10 @@ h6 {
 footer {
   color: white;
 
-  hr{
+  hr {
     color: #c3c6ce;
   }
+
   button {
     padding-left: 0;
     padding-right: 0.5rem;
@@ -608,15 +610,15 @@ footer {
   }
 
 
-  ul{
+  ul {
     list-style: none;
 
-    span{
+    span {
       margin-bottom: .3rem;
       display: flex;
-      align-items:center ;
+      align-items: center;
 
-      i{
+      i {
         padding: 0 .5rem;
         font-size: .3rem;
       }
