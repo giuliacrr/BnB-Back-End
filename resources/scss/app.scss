@@ -63,7 +63,15 @@ $primary-color: #d6d3c8;
 //---------
 body {
   background: rgb(232, 157, 130);
-  background: linear-gradient(180deg, rgba(232, 157, 130, 1) 0%, rgba(231, 133, 98, 1) 25%, rgba(118, 163, 172, 1) 45%, rgba(22, 105, 122, 1) 64%, rgba(44, 44, 44, 1) 83%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(232, 157, 130, 1) 0%,
+    rgba(231, 133, 98, 1) 25%,
+    rgba(118, 163, 172, 1) 45%,
+    rgba(22, 105, 122, 1) 64%,
+    rgba(44, 44, 44, 1) 83%,
+    rgba(0, 0, 0, 1) 100%
+  );
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -72,7 +80,7 @@ body {
 
 #app {
   display: contents;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 main {
@@ -278,8 +286,8 @@ h6 {
     transition: stroke-dashoffset 0.3s ease-in;
   }
 
-  .checkbox-wrapper input[type="checkbox"]:checked+.terms-label .checkbox-box,
-  .checkbox-wrapper input[type="checkbox"]:checked+.terms-label .checkbox-tick {
+  .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-box,
+  .checkbox-wrapper input[type="checkbox"]:checked + .terms-label .checkbox-tick {
     stroke-dashoffset: 0;
   }
 
@@ -332,110 +340,113 @@ h6 {
   margin-top: 3rem;
   margin-bottom: 3rem;
 
-    .card {
-      display: block;
-      position: relative!important;
-      height: 250px;
-      margin: 1.8rem auto;
-      background-color: $partial-primary-color;
-      border-radius: 10px;
-      overflow: hidden;
-      perspective: 1000px;
-      box-shadow: 0 0 0 5px $primary-color;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  .btn-index-add-appartment {
+    background-color: $secondary-color;
 
-      p {
-        color: $grey;
-      }
+    &:hover {
+      background-color: $partial-secondary-color;
+      color: $secondary-color;
+      border-color: $secondary-color;
+    }
+  }
 
-      h5 {
-        color: $partial-secondary-color;
-      }
+  .card {
+    display: block;
+    position: relative !important;
+    height: 250px;
+    margin: 1.8rem auto;
+    background-color: $partial-primary-color;
+    border-radius: 10px;
+    overflow: hidden;
+    perspective: 1000px;
+    box-shadow: 0 0 0 5px $primary-color;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-      .filter{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #2c2c2c7e;
-
-        .card-title{
-          margin-top: 10%;
-        }
-        .card-description{
-          color: $partial-primary-color;
-          font-size: 1.2rem;
-        }
-      }
-
-      img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        object-position: center;
-      }
+    p {
+      color: $grey;
     }
 
-    .card:hover {
-      transform: scale(1.01);
-      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    h5 {
+      color: $partial-secondary-color;
     }
 
-
-
-    .card-content-hover {
+    .filter {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-      background-color: $partial-primary-color;
-      transform: rotateX(-90deg);
-      transform-origin: bottom;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background-color: #2c2c2c7e;
 
-      .cover{
-        transition: .5s;
-        &:hover{
-          transform: scale(110%);
-          transition: .5s;
-        }
+      .card-title {
+        margin-top: 10%;
       }
-      &:hover{
-        transform: rotateX(0deg);
+      .card-description {
+        color: $partial-primary-color;
+        font-size: 1.2rem;
       }
-
-      .btn-container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin: 40px 0;
-      }
-
-
     }
 
-    .card:hover .card-content-hover {
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  }
+
+  .card-content-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: $partial-primary-color;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    .cover {
+      transition: 0.5s;
+      &:hover {
+        transform: scale(110%);
+        transition: 0.5s;
+      }
+    }
+    &:hover {
       transform: rotateX(0deg);
     }
 
-
-    .card-title {
-      margin: 0;
-      color: $grey;
-      font-weight: 700;
-
-
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
     }
+  }
 
-    .card-description {
-      margin: 10px 0 10px;
-      font-size: 16px;
-      color: $grey;
-      line-height: 1.4;
-    }
+  .card:hover .card-content-hover {
+    transform: rotateX(0deg);
+  }
+
+  .card-title {
+    margin: 0;
+    color: $grey;
+    font-weight: 700;
+  }
+
+  .card-description {
+    margin: 10px 0 10px;
+    font-size: 16px;
+    color: $grey;
+    line-height: 1.4;
+  }
 }
 
 // Dashboard
@@ -482,7 +493,6 @@ h6 {
       font-weight: bold;
       text-decoration: none;
       text-transform: uppercase;
-
     }
 
     .card-content {
@@ -533,10 +543,7 @@ h6 {
   }
 }
 
-
 /* Payment page*/
-
-
 .payment-card {
   background-color: whitesmoke;
   border-radius: 20px;
@@ -566,7 +573,7 @@ h6 {
     height: 100px !important;
     border-top-right-radius: 15px;
     border-bottom-left-radius: 50%;
-    transition: ease-out .5s;
+    transition: ease-out 0.5s;
 
     img {
       position: absolute;
@@ -578,7 +585,6 @@ h6 {
   }
 
   button {
-
     transform: translate(-50%, 125%);
     width: 40%;
     border-radius: 1rem;
@@ -586,7 +592,7 @@ h6 {
     background-color: $partial-secondary-color;
     color: #fff;
     font-size: 1rem;
-    padding: .5rem;
+    padding: 0.5rem;
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -612,20 +618,16 @@ h6 {
     .card-footer {
       display: flex !important;
       justify-content: center;
-
-
     }
 
     button {
       transform: translate(-50%, 50%);
       opacity: 1;
     }
-
   }
 }
 
 //Footer
-
 footer {
   color: white;
 
@@ -645,19 +647,52 @@ footer {
     }
   }
 
-
   ul {
     list-style: none;
+    cursor: pointer;
 
     span {
-      margin-bottom: .3rem;
+      margin-bottom: 0.3rem;
       display: flex;
       align-items: center;
 
       i {
-        padding: 0 .5rem;
-        font-size: .3rem;
+        padding: 0 0.5rem;
+        font-size: 0.3rem;
       }
     }
+  }
+}
+
+// Login - form
+.form-login-box {
+  .form-check-input:checked {
+    background-color: $partial-secondary-color;
+    border-color: $partial-secondary-color;
+  }
+
+  a {
+    color: $partial-secondary-color;
+
+    &:hover {
+      color: #bd6d50;
+    }
+  }
+}
+
+// Statistiche
+.statistics-box {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+// Email
+.messages-img-box {
+  img {
+    height: 90px;
+    width: 90px;
+    object-fit: cover;
+    object-position: center;
   }
 }
