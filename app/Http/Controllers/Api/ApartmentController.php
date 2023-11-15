@@ -114,7 +114,7 @@ class ApartmentController extends Controller
     // Paginazione
     $apartments = $query
       ->with('services', 'sponsorships')
-      ->paginate(10);
+      ->paginate(9);
 
     return response()->json([
       'apartments' => $apartments,
