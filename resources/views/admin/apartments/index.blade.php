@@ -12,12 +12,26 @@
                             <div class="col-12 col-md-6 position-relative">
                                 <div class="filter d-md-none text-center">
                                     <h1 class="card-title">{{ $apartment->title }}</h1>
+                                    <!--if-->
+                                @if ($apartment->sponsorships->count())
+                                <span style="color:#fff;"><i class="fa-solid fa-star" style="color:#e78b6a;"></i> Sponsorizzato</span>
+                                <script>
+                                    console.log("hello");
+                                </script>
+                                @endif
                                     <p class="card-description">{{ $apartment->address }}</p>
                                 </div>
                                 <img src="{{ asset('storage/' . $apartment->thumbnail) }}" alt="{{ $apartment->title }}">
                             </div>
                             <div class="col">
                                 <h3 class="card-title">{{ $apartment->title }}</h3>
+                                <!--if-->
+                                @if ($apartment->sponsorships->count())
+                                <span style="color:#16697a;"><i class="fa-solid fa-star" style="color:#e78b6a;"></i> Sponsorizzato </span>
+                                <script>
+                                    console.log("hello");
+                                </script>
+                                @endif
                                 <p class="card-description">{{ $apartment->address }}</p>
                                 {{-- Proprietario dell'appartamento --}}
                                 <p class="card-description">Host:
@@ -32,6 +46,13 @@
                                     <div class="cover">
                                         <div class="text-center">
                                             <h1 class="card-title">{{ $apartment->title }}</h1>
+                                            <!--if-->
+                                    @if ($apartment->sponsorships->count())
+                                    <span style="color:#16697a;"><i class="fa-solid fa-star" style="color:#e78b6a;"></i> Sponsorizzato</span>
+                                    <script>
+                                        console.log("hello");
+                                    </script>
+                                    @endif
                                             <p class="card-description">{{ $apartment->address }}</p>
                                         </div>
                                     </div>
