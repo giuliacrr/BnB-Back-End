@@ -13,7 +13,6 @@ class ApartmentController extends Controller
 {
   public function index(Request $request)
   {
-    $city = $request->input('city');
     $address = $request->input('address');
     $rooms_number = $request->input('rooms_number');
     $beds_number = $request->input('beds_number');
@@ -72,13 +71,17 @@ class ApartmentController extends Controller
     }
 
     if ($services) {
-      $query->whereHas('services', function ($q) use ($services) {
-        if (is_array($services)) {
-          $q->whereIn('service_id', $services);
-        } else {
-          $q->where('service_id', $services);
+      if (is_array($services)) {
+        foreach ($services as $service) {
+          $query->whereHas('services', function ($q) use ($service) {
+            $q->where('service_id', $service);
+          });
         }
-      });
+      } else {
+        $query->whereHas('services', function ($q) use ($services) {
+          $q->where('service_id', $services);
+        });
+      }
     }
 
     if ($sponsorships && $sponsorships == 1) {
