@@ -93,7 +93,7 @@
         <footer class="mt-5">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
-                    <img class="logo py-4" src="../../LogoBnb_white.png" alt="LogoB'n'B" style="width: 150px;">
+                    <img class="logo py-4" src="../../../LogoBnb_white.png" alt="LogoB'n'B" style="width: 150px;">
                     <div class="mt-4">
                         <button><i class="fa-solid fa-globe"></i><span class="ps-1">Italiano
                                 (IT)</span></button>
