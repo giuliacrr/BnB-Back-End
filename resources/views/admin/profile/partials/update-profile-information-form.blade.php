@@ -19,10 +19,30 @@
 
         <div class="mb-2">
             <label for="name">{{__('Name')}}</label>
-            <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" required autofocus>
+            <input class="form-control" type="text" name="name" id="name" autocomplete="name" value="{{old('name', $user->name)}}" autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->get('name')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="surname">{{__('Surname')}}</label>
+            <input class="form-control" type="text" name="surname" id="surname" autocomplete="surname" value="{{old('surname', $user->surname)}}" autofocus>
+            @error('surname')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('surname')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="birth_date">{{__('Date of Birth')}}</label>
+            <input class="form-control" type="date" name="birth_date" id="birth_date" autocomplete="birth_date" value="{{old('birth_date', $user->birth_date)}}" autofocus>
+            @error('birth_date')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('birth_date')}}</strong>
             </span>
             @enderror
         </div>

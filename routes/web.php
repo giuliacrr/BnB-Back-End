@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    return redirect("http://localhost:5174/");
 });
 
 Route::get('/dashboard', function () {
@@ -29,12 +32,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
 
+//Mi crea la rotta con nome admin.apartments + tutte le rotte sottostanti ad essa (ex. admin.apartments.edit)
 Route::middleware('auth')
-    ->prefix("admin")//Path prefix
-    ->name("admin.")//Name prefix
-    ->group(function() {
-    Route::resource("apartments", ApartmentController::class);
-});
-    
+    ->prefix("admin") //Path prefix
+    ->name("admin.") //Name prefix
+    ->group(function () {
+        Route::resource("apartments", ApartmentController::class);
+        Route::get("messages", [MessageController::class, "index"])->name("messages");
+        Route::get("statistics/{slug}", [ViewController::class, "show"])->name("statistics.show");
+    });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get("/payment/{slug}", [PaymentController::class, "show"])->name('payment.show');
+    Route::post('/payment/success', [PaymentController::class, "success"])->name('payment.success');
+});
+
+
+require __DIR__ . '/auth.php';
